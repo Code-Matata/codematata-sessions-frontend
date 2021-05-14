@@ -21,7 +21,7 @@ function SearchComponent() {
 export default SearchComponent;
 
 const MainDiv = styled.div`
-  height: 25vh;
+  height: 30vh;
   width: 90vw;
   background-color: ${colors.darkMainColor};
   border-radius: 5px;

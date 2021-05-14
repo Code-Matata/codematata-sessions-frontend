@@ -23,6 +23,9 @@ export default EventsComponent;
 const MainSection = styled.section`
   margin-top: 2em;
   color: black;
+  @media (min-width: 800px) {
+    width: 95vw;
+  }
 `;
 
 const EventsComponentDiv = styled.div`
@@ -33,7 +36,8 @@ const EventsComponentDiv = styled.div`
   align-content: space-around;
 
   @media (min-width: 800px) {
-    padding: 1em 2em 2em 3em;
-    justify-content: flex-start;
+    padding: 1em 4em 2em 4em;
+    align-items: center;
+    justify-content: center;
   }
 `;
