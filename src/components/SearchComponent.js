@@ -29,17 +29,25 @@ const MainDiv = styled.div`
   flex-flow: column nowrap;
   justify-content: space-evenly;
   align-items: center;
-  margin-bottom: -10em;
+  margin-bottom: -8em;
+
+  @media (min-width: 800px) {
+    flex-flow: row nowrap;
+    height: 15vh;
+  }
 `;
 
 const FilterDiv = styled.div`
-  height: 6.5vh;
+  height: 6vh;
   width: 80vw;
   background-color: ${colors.darkMainColor};
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
   justify-content: space-evenly;
+  @media (min-width: 800px) {
+    width: 27vw;
+  }
 `;
 
 const FilterTitle = styled.h3`
@@ -64,5 +72,13 @@ const SearchButton = styled.button`
   color: ${colors.white};
   :focus {
     outline: none;
+  }
+  :hover {
+    color: ${colors.darkMainColor};
+    background-color: ${colors.white};
+  }
+  @media (min-width: 800px) {
+    width: 18vw;
+    height: 10vh;
   }
 `;

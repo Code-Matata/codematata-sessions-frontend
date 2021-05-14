@@ -31,4 +31,9 @@ const EventsComponentDiv = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-content: space-around;
+
+  @media (min-width: 800px) {
+    padding: 1em 2em 2em 3em;
+    justify-content: flex-start;
+  }
 `;
