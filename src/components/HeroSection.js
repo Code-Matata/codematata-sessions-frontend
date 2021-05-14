@@ -27,13 +27,13 @@ const MainDiv = styled.div`
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  padding-bottom: 3em;
+  padding-bottom: 4em;
   background-color: ${colors.main};
   z-index: -1;
 `;
 
 const TopDiv = styled.div`
-  height: 50vh;
+  height: 45vh;
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
@@ -50,9 +50,14 @@ const TopDiv = styled.div`
 
 const HeroTextDiv = styled.div`
   display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  margin: 1em 2em 0em 2em;
 `;
 
 const HeroText = styled.p`
   color: ${colors.white};
   font-weight: 400;
+  font-size: 1.7em;
 `;

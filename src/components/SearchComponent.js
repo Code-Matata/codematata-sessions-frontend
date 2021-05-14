@@ -62,4 +62,7 @@ const SearchButton = styled.button`
   background-color: ${colors.mainColor};
   border-radius: 5px;
   color: ${colors.white};
+  :focus {
+    outline: none;
+  }
 `;
