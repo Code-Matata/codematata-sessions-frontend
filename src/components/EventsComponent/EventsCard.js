@@ -35,7 +35,12 @@ const MainCardDiv = styled.div`
   width: 16em;
   border-radius: 5px;
   background-color: ${colors.white};
-  margin-top: 1em;
+  margin: 1em 1em 2em 1em;
+
+  @media (min-width: 800px) {
+    height: 19em;
+    width: 17.5em;
+  }
 `;
 
 const ImageDiv = styled.div`
@@ -52,6 +57,9 @@ const ImageDiv = styled.div`
     flex-shrink: 0;
     min-width: 100%;
     min-height: 100%;
+  }
+  @media (min-width: 800px) {
+    height: 11em;
   }
 `;
 

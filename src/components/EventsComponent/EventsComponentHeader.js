@@ -14,10 +14,17 @@ export default EventsComponentHeader;
 
 const MainDiv = styled.div`
   margin: 0 0 0 1.6em;
+  @media (min-width: 800px) {
+    margin: 0 0 0 5em;
+  }
 `;
 
 const Title = styled.h3`
   font-size: 1.4em;
   font-weight: 700;
   color: ${colors.darkMainColor};
+
+  @media (min-width: 800px) {
+    font-size: 1.7em;
+  }
 `;
