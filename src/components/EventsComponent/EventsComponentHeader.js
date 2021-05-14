@@ -15,7 +15,7 @@ export default EventsComponentHeader;
 const MainDiv = styled.div`
   margin: 0 0 0 1.6em;
   @media (min-width: 800px) {
-    margin: 0 0 0 5em;
+    margin: 0 0 0 12em;
   }
 `;
 
