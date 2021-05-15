@@ -1,41 +1,53 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import { colors } from "../../resources/ThemeColors";
 import CodeImage from "../../resources/code-1.jpg";
+import { withRouter } from "react-router-dom";
 
-function EventsCard() {
-  return (
-    <MainCardDiv>
-      <ImageDiv>
-        <img src={CodeImage} alt="session" loading="lazy"></img>
-      </ImageDiv>
-      <EventDescriptionDiv>
-        <DateDiv>
-          <EventDate>
-            Sep
-            <br />
-            18
-          </EventDate>
-        </DateDiv>
-        <TextDescriptionDiv>
-          <DescriptionTitle>JavaScript 101 with Steve Kibuika</DescriptionTitle>
-          <Description>
-            A simple introduction to the fundamentals of JavaScript.
-          </Description>
-        </TextDescriptionDiv>
-      </EventDescriptionDiv>
-    </MainCardDiv>
-  );
+class EventsCard extends Component {
+  state = {};
+  redirect = (name) => {
+    this.props.history.push({ pathname: "/session", search: `?name=${name}` });
+  };
+  render() {
+    return (
+      <MainCardDiv onClick={() => this.redirect("js")}>
+        <ImageDiv>
+          <img src={CodeImage} alt="session" loading="lazy"></img>
+        </ImageDiv>
+        <EventDescriptionDiv>
+          <DateDiv>
+            <EventDate>
+              Sep
+              <br />
+              18
+            </EventDate>
+          </DateDiv>
+          <TextDescriptionDiv>
+            <DescriptionTitle>
+              JavaScript 101 with Steve Kibuika
+            </DescriptionTitle>
+            <Description>
+              A simple introduction to the fundamentals of JavaScript.
+            </Description>
+          </TextDescriptionDiv>
+        </EventDescriptionDiv>
+      </MainCardDiv>
+    );
+  }
 }
 
-export default EventsCard;
+export default withRouter(EventsCard);
 
-const MainCardDiv = styled.div`
+const MainCardDiv = styled.button`
   height: 17em;
   width: 16em;
   border-radius: 5px;
   background-color: ${colors.white};
   margin: 1em 1em 2em 1em;
+  :focus {
+    outline: none;
+  }
 
   @media (min-width: 800px) {
     height: 19em;
@@ -44,7 +56,7 @@ const MainCardDiv = styled.div`
 `;
 
 const ImageDiv = styled.div`
-  height: 9em;
+  height: 10.5em;
   width: 100%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -64,7 +76,7 @@ const ImageDiv = styled.div`
 `;
 
 const EventDescriptionDiv = styled.div`
-  margin: 0.4em 0.5em 0.5em 0.5em;
+  margin: 0.2em 0.5em 0.5em 0.5em;
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-start;
@@ -79,7 +91,8 @@ const EventDate = styled.p`
   font-size: 1em;
   font-weight: 650;
   color: ${colors.darkMainColor};
-  margin-top: 0.2em;
+  padding-top: 0.2em;
+  padding-left: 0.2em;
 `;
 
 const TextDescriptionDiv = styled.div`
@@ -94,10 +107,12 @@ const DescriptionTitle = styled.h2`
   font-size: 1em;
   font-weight: 600;
   color: ${colors.darkMainColor};
+  text-align: left;
 `;
 
 const Description = styled.p`
   font-size: 0.8em;
   font-weight: 400;
   color: ${colors.mainColor};
+  text-align: left;
 `;
