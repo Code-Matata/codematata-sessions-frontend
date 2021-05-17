@@ -51,7 +51,7 @@ const MainCardDiv = styled.button`
 
   @media (min-width: 800px) {
     height: 19em;
-    width: 17.5em;
+    width: 18em;
   }
 `;
 
@@ -71,7 +71,7 @@ const ImageDiv = styled.div`
     min-height: 100%;
   }
   @media (min-width: 800px) {
-    height: 11em;
+    height: 12.5em;
   }
 `;
 

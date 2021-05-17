@@ -8,6 +8,10 @@ class SessionPage extends Component {
     super(props);
     this.state = {};
   }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
   render() {
     return (
       <MainDiv>
@@ -42,7 +46,7 @@ class SessionPage extends Component {
 export default SessionPage;
 
 const MainDiv = styled.div`
-  height: 90vh;
+  height: auto;
   padding: 2em 1.5em 2em 1.5em;
   display: flex;
   flex-flow: column nowrap;
@@ -64,6 +68,22 @@ const ImageDiv = styled.div`
     width: 100%;
     border-radius: 7px;
   }
+
+  @media (min-width: 480px) {
+    width: 90%;
+    height: 30vh;
+  }
+  @media (min-width: 600px) {
+    height: 35vh;
+  }
+  @media (min-width: 800px) {
+    height: 40vh;
+    width: 80%;
+  }
+
+  @media (min-width: 1000px) {
+    height: 50vh;
+  }
 `;
 
 const DateDiv = styled.div`
@@ -78,14 +98,21 @@ const DateDiv = styled.div`
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+  @media (min-width: 480px) {
+    width: 2em;
+  }
 `;
 const EventDate = styled.p`
   line-height: 1.8;
   font-size: 1em;
   font-weight: 750;
-  padding-top: 0.2em;
-  padding-left: 0.2em;
+  padding: 0.2em;
   color: ${colors.darkMainColor};
+  text-align: center;
+  @media (min-width: 480px) {
+    font-height: 0.7em;
+    line-height: 1.5;
+  }
 `;
 
 const SessionDescriptionDiv = styled.div`
@@ -98,6 +125,9 @@ const SessionDescriptionDiv = styled.div`
     text-align: left;
     font-weight: bold;
     color: ${colors.darkMainColor};
+    @media (min-width: 800px) {
+      font-size: 1.5em;
+    }
   }
 
   > p {
@@ -105,6 +135,15 @@ const SessionDescriptionDiv = styled.div`
     text-align: left;
     margin-top: 0.7em;
     colors: ${colors.mainColor};
+    @media (min-width: 800px) {
+      font-size: 1.1em;
+    }
+  }
+  @media (min-width: 480px) {
+    width: 90%;
+  }
+  @media (min-width: 800px) {
+    width: 80%;
   }
 `;
 
@@ -120,6 +159,13 @@ const ButtonsDiv = styled.div`
 
 const IframeDiv = styled.iframe`
   margin-top: 1em;
-  width: 322px;
+  width: 100%;
   height: 250px;
+  border-radius: 7px;
+  @media (min-width: 480px) {
+    height: 300px;
+  }
+  @media (min-width: 800px) {
+    height: 350px;
+  }
 `;
