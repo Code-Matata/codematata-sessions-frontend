@@ -38,7 +38,7 @@ class LoaderPage extends Component {
 export default LoaderPage;
 
 const MainDiv = styled.div`
-  height: 100vh;
+  height: 80vh;
   width: 100vw;
   display: flex;
   flex-flow: column nowrap;
