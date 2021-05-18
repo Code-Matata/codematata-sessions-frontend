@@ -5,7 +5,7 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
 export default function Header() {
   return (
-    <Popover className="fixed bg-white z-10 w-screen md:px-16">
+    <Popover className="fixed bg-white z-10 w-screen mb-20 md:px-16 md:mb-40">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-4 sm:px-6">

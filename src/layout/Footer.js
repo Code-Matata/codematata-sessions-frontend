@@ -42,7 +42,7 @@ const MainDiv = styled.div`
   color: ${colors.white};
   height: auto;
   width: 100%;
-  padding: 1em;
+  padding: 2em;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;

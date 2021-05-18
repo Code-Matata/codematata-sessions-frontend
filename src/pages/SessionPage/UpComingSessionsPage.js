@@ -1,5 +1,12 @@
+// This page is meant to be the one for upcoming live sessions
+
+// The live sessions should have a different layout as the pre-recorded sessions.
+
+// Keep this page for that.
+
 import React, { Component } from "react";
 import styled from "styled-components";
+import CodeImage from "../../resources/code-1.jpg";
 import { colors } from "../../resources/ThemeColors";
 
 class SessionPage extends Component {
@@ -14,6 +21,16 @@ class SessionPage extends Component {
   render() {
     return (
       <MainDiv>
+        <ImageDiv>
+          <img src={CodeImage} alt="code" loading="lazy"></img>
+          <DateDiv>
+            <EventDate>
+              Sep
+              <br />
+              18
+            </EventDate>
+          </DateDiv>
+        </ImageDiv>
         <SessionDescriptionDiv>
           <h2>JavaScript 101 with Steve Kibuika</h2>
           <p>A simple introduction to the fundamentals of JavaScript.</p>
@@ -47,6 +64,67 @@ const MainDiv = styled.div`
   }
   @media (min-width: 800px) {
     padding-top: 8em;
+  }
+`;
+
+const ImageDiv = styled.div`
+  background-color: ${colors.gray};
+  height: 25vh;
+  width: 100%;
+  border-radius: 7px;
+  position: relative;
+
+  > img {
+    flex-shrink: 0;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 7px;
+  }
+
+  @media (min-width: 480px) {
+    width: 90%;
+    height: 30vh;
+  }
+  @media (min-width: 600px) {
+    height: 35vh;
+  }
+  @media (min-width: 800px) {
+    height: 45vh;
+    width: 80%;
+  }
+
+  @media (min-width: 1000px) {
+    height: 50vh;
+  }
+`;
+
+const DateDiv = styled.div`
+  width: 2.5em;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  height: auto;
+  background-color: ${colors.white};
+  border-radius: 7px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  @media (min-width: 480px) {
+    width: 2em;
+  }
+`;
+const EventDate = styled.p`
+  line-height: 1.8;
+  font-size: 1em;
+  font-weight: 750;
+  padding: 0.2em;
+  color: ${colors.darkMainColor};
+  text-align: center;
+  @media (min-width: 480px) {
+    font-height: 0.7em;
+    line-height: 1.5;
   }
 `;
 
