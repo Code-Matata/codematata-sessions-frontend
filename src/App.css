@@ -29,3 +29,13 @@
   font-weight: 800;
   font-size: x-large;
 }
+
+.date-picker {
+  color: white;
+  background-color: #262a52;
+}
+
+.date-picker1 {
+  background-color: #262a52;
+  color: #262a52;
+}

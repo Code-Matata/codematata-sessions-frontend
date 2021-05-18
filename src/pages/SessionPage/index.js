@@ -64,6 +64,7 @@ const ImageDiv = styled.div`
 
   > img {
     flex-shrink: 0;
+    object-fit: cover;
     height: 100%;
     width: 100%;
     border-radius: 7px;
@@ -77,7 +78,7 @@ const ImageDiv = styled.div`
     height: 35vh;
   }
   @media (min-width: 800px) {
-    height: 40vh;
+    height: 45vh;
     width: 80%;
   }
 

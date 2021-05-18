@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { colors } from "../resources/ThemeColors";
+import DatePicker from "react-date-picker";
 
 function SearchComponent() {
+  const [date, setDate] = useState(new Date());
+
+  const onChangeDate = (date) => {
+    setDate(date);
+  };
   return (
     <MainDiv>
       <FilterDiv>
@@ -10,8 +16,13 @@ function SearchComponent() {
         <FilterInput></FilterInput>
       </FilterDiv>
       <FilterDiv>
-        <FilterTitle>When?</FilterTitle>
-        <FilterInput></FilterInput>
+        <FilterTitle style={{ marginBottom: "1em" }}>When?</FilterTitle>
+        <DatePicker
+          onChange={onChangeDate}
+          value={date}
+          className={"date-picker"}
+          calendarClassName={"date-picker1"}
+        />
       </FilterDiv>
       <SearchButton>Search</SearchButton>
     </MainDiv>
