@@ -14,6 +14,7 @@ import LoaderPage from "./pages/LoaderPage/LoaderPage";
 import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
 import LostPage from "./pages/404/404";
+import CreateSession from "./pages/CreateSession";
 
 export const hist = createBrowserHistory();
 
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/" component={LoaderPage} />
           <Route path="/dash" component={MainPage} />
           <Route path="/session" component={SessionPage} />
+          <Route path="/create-session" component={CreateSession} />
           <Route path="/sign-in" component={SignIn} />
           <Route path="/sign-up" component={SignUp} />
           <Route path="*" component={LostPage} />
