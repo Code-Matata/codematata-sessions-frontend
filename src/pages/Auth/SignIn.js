@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { colors } from "../../resources/ThemeColors";
+import CodeImage from "../../resources/happy-people.jpg";
 
 function SignIn() {
   return (
@@ -9,6 +10,9 @@ function SignIn() {
         <Title>Welcome Back</Title>
         <Button>Sign In with Google</Button>
       </AuthButtonsDiv>
+      {/* <a href="https://www.freepik.com/vectors/people">
+        People vector created by pikisuperstar - www.freepik.com
+      </a> */}
     </MainDiv>
   );
 }
@@ -21,6 +25,11 @@ const MainDiv = styled.div`
   align-items: center;
   justify-content: center;
   background-color: ${colors.gray};
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(38, 42, 85)),
+    url(${CodeImage});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const AuthButtonsDiv = styled.div`
