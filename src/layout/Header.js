@@ -34,7 +34,7 @@ export default function Header() {
                   Home
                 </a>
                 <a
-                  href="/"
+                  href="/create-session"
                   className="text-base font-medium text-gray-500 hover:text-gray-900"
                 >
                   Create a Session
@@ -100,7 +100,7 @@ export default function Header() {
                     </a>
 
                     <a
-                      href="/"
+                      href="/create-session"
                       className="text-base font-medium text-gray-900 hover:text-gray-700"
                     >
                       Create a Session
