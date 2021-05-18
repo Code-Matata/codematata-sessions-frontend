@@ -7,7 +7,6 @@ function SignIn() {
   return (
     <MainDiv>
       <AuthButtonsDiv>
-        <Title>Welcome Back</Title>
         <Button>Sign In with Google</Button>
       </AuthButtonsDiv>
       {/* <a href="https://www.freepik.com/vectors/people">
@@ -30,6 +29,10 @@ const MainDiv = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  @media (min-width: 800px) {
+    height: 90vh;
+  }
 `;
 
 const AuthButtonsDiv = styled.div`
@@ -42,7 +45,7 @@ const AuthButtonsDiv = styled.div`
   flex-flow: column nowrap;
   align-items: center;
   justify-content: flex-start;
-  padding: 1em 0 3em 0;
+  padding: 3em 0 3em 0;
 
   @media (min-width: 600px) {
     width: 60%;
@@ -51,13 +54,6 @@ const AuthButtonsDiv = styled.div`
   @media (min-width: 600px) {
     width: 40%;
   }
-`;
-
-const Title = styled.h3`
-  font-weight: 700;
-  font-size: 1.2em;
-  color: ${colors.darkMainColor};
-  margin: 1.5em 0 3em 0;
 `;
 
 const Button = styled.button`
