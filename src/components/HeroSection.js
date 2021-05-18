@@ -36,7 +36,7 @@ const MainDiv = styled.div`
 `;
 
 const TopDiv = styled.div`
-  height: 50vh;
+  height: 60vh;
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
@@ -50,7 +50,7 @@ const TopDiv = styled.div`
   position: relative;
   z-index: 0;
   @media (min-width: 800px) {
-    height: 65vh;
+    height: 70vh;
   }
 `;
 
@@ -59,7 +59,7 @@ const HeroTextDiv = styled.div`
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  margin: 1em 2em 0em 2em;
+  margin: 2em 2em 0em 2em;
 `;
 
 const HeroText = styled.p`
