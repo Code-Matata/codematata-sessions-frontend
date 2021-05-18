@@ -39,7 +39,7 @@ function LostPage() {
 export default withRouter(LostPage);
 
 const MainDiv = styled.div`
-  height: 90vh;
+  height: 95vh;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -50,13 +50,17 @@ const MainDiv = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 3em;
+  padding: 8em 3em 3em 3em;
 `;
 
 const Title = styled.h3`
   color: ${colors.white};
   font-size: 4em;
   font-weight: 800;
+
+  @media (min-width: 800px) {
+    font-size: 6em;
+  }
 `;
 
 const Description = styled.p`
@@ -100,7 +104,7 @@ const IframeDiv = styled.iframe`
     width: 80%;
   }
   @media (min-width: 800px) {
-    height: 30vh;
+    height: 400px;
     width: 50%;
   }
 `;
