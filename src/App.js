@@ -10,6 +10,8 @@ import Footer from "./layout/Footer";
 import MainPage from "./pages/MainPage/index";
 import SessionPage from "./pages/SessionPage";
 import LoaderPage from "./pages/LoaderPage/LoaderPage";
+import SignIn from "./pages/Auth/SignIn";
+import SignUp from "./pages/Auth/SignUp";
 
 function App() {
   return (
@@ -18,7 +20,9 @@ function App() {
       <Switch>
         <Route exact path="/" component={LoaderPage} />
         <Route path="/dash" component={MainPage} />
-        <Route exact path="/session" component={SessionPage} />
+        <Route path="/session" component={SessionPage} />
+        <Route path="/sign-in" component={SignIn} />
+        <Route path="/sign-up" component={SignUp} />
       </Switch>
       <Footer />
     </Router>
