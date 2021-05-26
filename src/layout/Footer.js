@@ -109,7 +109,7 @@ const ContentDiv = styled.div`
 const SecondDiv = styled.div`
   height: auto;
   border-top: 1px solid white;
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
