@@ -8,6 +8,7 @@ function SignIn() {
     <MainDiv>
       <AuthButtonsDiv>
         <Button>Sign In with Google</Button>
+        <Button style={{ marginTop: "2em" }}>Sign In with GitHub</Button>
       </AuthButtonsDiv>
       {/* <a href="https://www.freepik.com/vectors/people">
         People vector created by pikisuperstar - www.freepik.com

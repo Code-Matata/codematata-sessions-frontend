@@ -5,7 +5,7 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
 export default function Header() {
   return (
-    <Popover className="fixed bg-white z-10 w-screen mb-20 md:px-16 md:mb-40">
+    <Popover className="fixed bg-white z-10 w-screen mb-20 px-8 md:px-16 md:mb-40">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -43,15 +43,9 @@ export default function Header() {
               <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                 <a
                   href="/sign-in"
-                  className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
-                >
-                  Sign in
-                </a>
-                <a
-                  href="/sign-up"
                   className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-800 hover:bg-indigo-700"
                 >
-                  Sign up
+                  Sign in
                 </a>
               </div>
             </div>
@@ -108,12 +102,12 @@ export default function Header() {
                   </div>
                   <div>
                     <a
-                      href="/sign-up"
+                      href="/sign-in"
                       className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
                     >
-                      Sign up
+                      Sign in
                     </a>
-                    <p className="mt-6 text-center text-base font-medium text-gray-500">
+                    {/* <p className="mt-6 text-center text-base font-medium text-gray-500">
                       Existing user?{" "}
                       <a
                         href="/sign-in"
@@ -121,7 +115,7 @@ export default function Header() {
                       >
                         Sign in
                       </a>
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>
