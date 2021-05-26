@@ -45,6 +45,11 @@ const MainCardDiv = styled.button`
   border-radius: 5px;
   background-color: ${colors.white};
   margin: 1em 1em 2em 1em;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  transition: box-shadow 500ms;
+  :hover {
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  }
   :focus {
     outline: none;
   }

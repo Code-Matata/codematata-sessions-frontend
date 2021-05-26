@@ -2,13 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import { colors } from "../../resources/ThemeColors";
 import CodeImage from "../../resources/happy-people.jpg";
+import GoogleIcon from "../../resources/icons/google.png";
+import GitHubIcon from "../../resources/icons/github.png";
 
 function SignIn() {
   return (
     <MainDiv>
       <AuthButtonsDiv>
-        <Button>Sign In with Google</Button>
-        <Button style={{ marginTop: "2em" }}>Sign In with GitHub</Button>
+        <Button>
+          <img src={GoogleIcon} alt="google auth icon"></img>
+          <p>Sign In with Google</p>
+        </Button>
+        <Button style={{ marginTop: "2em" }}>
+          {" "}
+          <img src={GitHubIcon} alt="github auth icon"></img>
+          <p>Sign In with GitHub</p>
+        </Button>
       </AuthButtonsDiv>
       {/* <a href="https://www.freepik.com/vectors/people">
         People vector created by pikisuperstar - www.freepik.com
@@ -38,7 +47,7 @@ const MainDiv = styled.div`
 
 const AuthButtonsDiv = styled.div`
   height: auto;
-  width: 70%;
+  width: 80%;
   background-color: ${colors.white};
   border-radius: 7px;
   color: white;
@@ -59,13 +68,26 @@ const AuthButtonsDiv = styled.div`
 
 const Button = styled.button`
   height: 3em;
-  width: 75%;
+  width: 80%;
   background-color: ${colors.mainColor};
   border-radius: 7px;
+  padding: 0em 1em 0em 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   :hover {
     background-color: ${colors.darkMainColor};
   }
   :focus {
     outline: none;
+  }
+
+  > img {
+    height: 1.5em;
+    width: 1.5em;
+  }
+
+  > p {
+    color: white;
   }
 `;

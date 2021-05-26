@@ -2,6 +2,7 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import CodeMatataLogo from "../resources/icons/codematata-logo.png";
 
 export default function Header() {
   return (
@@ -15,8 +16,8 @@ export default function Header() {
                   <p className="sr-only">CodeMatata</p>
                   <img
                     className="h-8 w-auto sm:h-10"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                    alt=""
+                    src={CodeMatataLogo}
+                    alt="codematata logo"
                   />
                 </a>
               </div>
@@ -43,7 +44,7 @@ export default function Header() {
               <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                 <a
                   href="/sign-in"
-                  className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-800 hover:bg-indigo-700"
+                  className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-900 hover:bg-indigo-800"
                 >
                   Sign in
                 </a>
@@ -72,8 +73,8 @@ export default function Header() {
                     <div>
                       <img
                         className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                        alt="Workflow"
+                        src={CodeMatataLogo}
+                        alt="codematata logo"
                       />
                     </div>
                     <div className="-mr-2">
@@ -103,7 +104,7 @@ export default function Header() {
                   <div>
                     <a
                       href="/sign-in"
-                      className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                      className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-900 hover:bg-indigo-800"
                     >
                       Sign in
                     </a>
