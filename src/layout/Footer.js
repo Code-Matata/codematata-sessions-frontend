@@ -5,32 +5,47 @@ import styled from "styled-components";
 function Footer() {
   return (
     <MainDiv>
-      <FooterContent>
-        <TitleDiv>Products</TitleDiv>
-        <ContentDiv>
-          <a
-            href="https://tusomeni.netlify.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Tusomeni
-          </a>
-        </ContentDiv>
-      </FooterContent>
-      <FooterContent>
-        <TitleDiv>Socials</TitleDiv>
-        <ContentDiv>
-          <a href="/">Twitter</a>
-          <a href="/">LinkedIn</a>
-          <a href="/">Facebook</a>
-        </ContentDiv>
-      </FooterContent>
-      <FooterContent>
-        <TitleDiv>Collaborate?</TitleDiv>
-        <ContentDiv>
-          <a href="/">Find the repo here</a>
-        </ContentDiv>
-      </FooterContent>
+      <FirstDiv>
+        <FooterContent>
+          <TitleDiv>Products</TitleDiv>
+          <ContentDiv>
+            <a
+              href="https://tusomeni.netlify.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Tusomeni
+            </a>
+          </ContentDiv>
+        </FooterContent>
+        <FooterContent>
+          <TitleDiv>Socials</TitleDiv>
+          <ContentDiv>
+            <a href="/">Twitter</a>
+            <a href="/">LinkedIn</a>
+            <a href="/">Facebook</a>
+          </ContentDiv>
+        </FooterContent>
+        <FooterContent>
+          <TitleDiv>Collaborate?</TitleDiv>
+          <ContentDiv>
+            <a
+              href="https://github.com/Code-Matata"
+              alt="CodeMatata organization"
+            >
+              Github organization here
+            </a>
+          </ContentDiv>
+        </FooterContent>
+      </FirstDiv>
+      <SecondDiv>
+        <CopyRight>
+          &copy; CodeMatata {new Date().getFullYear()}. All Rights Reserved.
+        </CopyRight>
+        <Attribute>
+          Illustrations by <a href="https://www.freepik.com/">Freepik</a>
+        </Attribute>
+      </SecondDiv>
     </MainDiv>
   );
 }
@@ -40,6 +55,14 @@ export default Footer;
 const MainDiv = styled.div`
   background-color: ${colors.darkMainColor};
   color: ${colors.white};
+  display: flex;
+  width: 100%;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+`;
+
+const FirstDiv = styled.div`
   height: auto;
   width: 100%;
   padding: 2em;
@@ -81,4 +104,28 @@ const ContentDiv = styled.div`
     font-size: 0.9em;
     cursor: pointer;
   }
+`;
+
+const SecondDiv = styled.div`
+  height: auto;
+  border-top: 1px solid white;
+  width: 80%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+`;
+
+const CopyRight = styled.p`
+  font-size: 0.8em;
+  font-weight: 500;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+`;
+
+const Attribute = styled.p`
+  font-size: 0.6em;
+  font-weight: 500;
+  padding-top: 1em;
+  padding-bottom: 1em;
 `;
