@@ -15,6 +15,7 @@ import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
 import LostPage from "./pages/404/404";
 import CreateSession from "./pages/CreateSession";
+import CookieConsent from "./components/CookieConsent";
 
 export const hist = createBrowserHistory();
 
@@ -33,7 +34,7 @@ function App() {
           <Route path="*" component={LostPage} />
         </Switch>
       </BrowserRouter>
-
+      <CookieConsent />
       <Footer />
     </Router>
   );

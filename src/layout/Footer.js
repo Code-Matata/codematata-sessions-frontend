@@ -39,12 +39,12 @@ function Footer() {
         </FooterContent>
       </FirstDiv>
       <SecondDiv>
-        <copyright>
+        <CopyRight>
           &copy; CodeMatata {new Date().getFullYear()}. All Rights Reserved.
-        </copyright>
-        <attribute>
+        </CopyRight>
+        <Attribute>
           Illustrations by <a href="https://www.freepik.com/">Freepik</a>
-        </attribute>
+        </Attribute>
       </SecondDiv>
     </MainDiv>
   );
@@ -114,18 +114,18 @@ const SecondDiv = styled.div`
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+`;
 
-  > copyright {
-    font-size: 0.8em;
-    font-weight: 500;
-    padding-top: 1em;
-    padding-bottom: 0.5em;
-  }
+const CopyRight = styled.p`
+  font-size: 0.8em;
+  font-weight: 500;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+`;
 
-  > attribute {
-    font-size: 0.6em;
-    font-weight: 500;
-    padding-top: 1em;
-    padding-bottom: 1em;
-  }
+const Attribute = styled.p`
+  font-size: 0.6em;
+  font-weight: 500;
+  padding-top: 1em;
+  padding-bottom: 1em;
 `;
