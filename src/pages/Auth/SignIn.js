@@ -98,9 +98,8 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  :hover {
-    background-color: ${colors.darkMainColor};
-  }
+  border: 3px solid ${colors.mainColor};
+
   :focus {
     outline: none;
   }

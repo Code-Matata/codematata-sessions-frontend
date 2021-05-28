@@ -76,19 +76,29 @@ export default function Header({ authenticated, currentUser, onLogout }) {
                             static
                             className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                           >
-                            <Menu.Item className="flex items-center justify-center p-4 w-full">
+                            <Menu.Item className="flex flex-col items-center justify-center p-4 w-full">
                               {({ active }) => (
-                                <button
-                                  className={classNames(
-                                    active
-                                      ? "bg-gray-900 w-9/12 hover:bg-indigo-800"
-                                      : "",
-                                    "block px-4 py-2 text-sm text-gray-700 w-9/12 hover:bg-indigo-800"
-                                  )}
-                                  onClick={onLogout}
-                                >
-                                  Sign Out
-                                </button>
+                                <>
+                                  <p
+                                    className={classNames(
+                                      active ? "bg-gray-100 text-center" : "",
+                                      "block px-4 py-2 text-sm text-gray-700 text-center"
+                                    )}
+                                  >
+                                    {currentUser.name}
+                                  </p>
+                                  <button
+                                    className={classNames(
+                                      active
+                                        ? "bg-gray-900 w-9/12  text-center"
+                                        : "",
+                                      "block px-4 py-2 text-sm text-gray-700 w-9/12  text-center"
+                                    )}
+                                    onClick={onLogout}
+                                  >
+                                    Sign Out
+                                  </button>
+                                </>
                               )}
                             </Menu.Item>
                           </Menu.Items>
@@ -170,16 +180,19 @@ export default function Header({ authenticated, currentUser, onLogout }) {
                           />
                         </div>
                         <div className="ml-3">
-                          <div className="text-base font-medium leading-none text-white">
+                          <div className="text-base font-medium leading-none text-white text-gray-900">
                             {currentUser.name}
                           </div>
-                          <div className="text-sm font-medium leading-none text-gray-400">
+                          <div className="text-sm font-medium leading-none text-gray-800">
                             {currentUser.email}
                           </div>
                         </div>
                       </div>
                       <div className="mt-3 px-2 space-y-1">
-                        <button className="w-full flex items-center justify-center px-2 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-900 hover:bg-indigo-800">
+                        <button
+                          className="w-full flex items-center justify-center px-2 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-900 hover:bg-indigo-800"
+                          onClick={onLogout}
+                        >
                           Sign Out
                         </button>
                       </div>

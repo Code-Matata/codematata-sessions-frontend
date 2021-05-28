@@ -9,7 +9,10 @@ const SecureRoute = ({ component: Component, authenticated, ...rest }) => (
         <Component {...rest} {...props} />
       ) : (
         <Redirect
-          to={{ pathname: "/sign-in", state: { from: props.location } }}
+          to={{
+            pathname: "/sign-in",
+            state: { from: props.location },
+          }}
         />
       )
     }

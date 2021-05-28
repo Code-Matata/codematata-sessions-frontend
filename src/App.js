@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter, Router, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
 // import renderIf from "render-if";
 //layout
@@ -14,12 +14,13 @@ import LoaderPage from "./pages/LoaderPage/LoaderPage";
 import SignIn from "./pages/Auth/SignIn";
 import LostPage from "./pages/404/404";
 import CreateSession from "./pages/CreateSession";
+// import Profile from "./pages/Profile/Profile";
 import CookieConsent from "./components/CookieConsent";
 
 import OAuth2RedirectHandler from "./pages/Auth/OAuth2RedirectHandler";
 import { getCurrentUser } from "./utils/APIUtils";
 import { ACCESS_TOKEN } from "./constants";
-// import SecureRoute from "./pages/SecureRoute";
+// import SecureRoute from "./pages/SecureRoute/SecureRoute";
 import Alert from "react-s-alert";
 import "react-s-alert/dist/s-alert-default.css";
 import "react-s-alert/dist/s-alert-css-effects/slide.css";
@@ -35,6 +36,9 @@ class App extends Component {
       loading: false,
       error: null,
     };
+
+    this.loadCurrentlyLoggedInUser = this.loadCurrentlyLoggedInUser.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   loadCurrentlyLoggedInUser() {
@@ -76,29 +80,27 @@ class App extends Component {
           onLogout={this.handleLogout}
           currentUser={this.state.currentUser}
         />
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={LoaderPage} />
-            <Route
-              path="/dash"
-              currentUser={this.state.currentUser}
-              component={MainPage}
-            />
-            <Route path="/session" component={SessionPage} />
-            <Route path="/create-session" component={CreateSession} />
-            <Route
-              path="/sign-in"
-              render={(props) => (
-                <SignIn authenticated={this.state.authenticated} {...props} />
-              )}
-            ></Route>
-            <Route
-              path="/oauth2/redirect"
-              component={OAuth2RedirectHandler}
-            ></Route>
-            <Route path="*" component={LostPage} />
-          </Switch>
-        </BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={LoaderPage} />
+          <Route
+            path="/dash"
+            currentUser={this.state.currentUser}
+            component={MainPage}
+          />
+          <Route path="/session" component={SessionPage} />
+          <Route path="/create-session" component={CreateSession} />
+          <Route
+            path="/sign-in"
+            render={(props) => (
+              <SignIn authenticated={this.state.authenticated} {...props} />
+            )}
+          ></Route>
+          <Route
+            path="/oauth2/redirect"
+            component={OAuth2RedirectHandler}
+          ></Route>
+          <Route path="*" component={LostPage} />
+        </Switch>
         <CookieConsent />
         <Footer />
       </Router>
