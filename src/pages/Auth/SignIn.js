@@ -1,29 +1,52 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import { colors } from "../../resources/ThemeColors";
 import CodeImage from "../../resources/happy-people.jpg";
 import GoogleIcon from "../../resources/icons/google.png";
 import GitHubIcon from "../../resources/icons/github.png";
+import { GOOGLE_AUTH_URL, GITHUB_AUTH_URL } from "../../constants";
+import { Redirect } from "react-router-dom";
+import Alert from "react-s-alert";
 
-function SignIn() {
-  return (
-    <MainDiv>
-      <AuthButtonsDiv>
-        <Button>
-          <img src={GoogleIcon} alt="google auth icon"></img>
-          <p>Sign In with Google</p>
-        </Button>
-        <Button style={{ marginTop: "2em" }}>
-          {" "}
-          <img src={GitHubIcon} alt="github auth icon"></img>
-          <p>Sign In with GitHub</p>
-        </Button>
-      </AuthButtonsDiv>
-      {/* <a href="https://www.freepik.com/vectors/people">
+class SignIn extends Component {
+  componentDidMount() {
+    if (this.props.location.state && this.props.location.state.error) {
+      setTimeout(() => {
+        Alert.error(this.props.location.state.error, { timeout: 5000 });
+        this.props.history.replace({
+          pathname: this.props.location.pathname,
+          state: {},
+        });
+      }, 100);
+    }
+  }
+  render() {
+    if (this.props.authenticated) {
+      return (
+        <Redirect
+          to={{ pathname: "/dash", state: { from: this.props.location } }}
+        />
+      );
+    }
+    return (
+      <MainDiv>
+        <AuthButtonsDiv>
+          <Button as="a" href={GOOGLE_AUTH_URL}>
+            <img src={GoogleIcon} alt="google auth icon"></img>
+            <p>Sign In with Google</p>
+          </Button>
+          <Button style={{ marginTop: "2em" }} as="a" href={GITHUB_AUTH_URL}>
+            {" "}
+            <img src={GitHubIcon} alt="github auth icon"></img>
+            <p>Sign In with GitHub</p>
+          </Button>
+        </AuthButtonsDiv>
+        {/* <a href="https://www.freepik.com/vectors/people">
         People vector created by pikisuperstar - www.freepik.com
       </a> */}
-    </MainDiv>
-  );
+      </MainDiv>
+    );
+  }
 }
 
 export default SignIn;

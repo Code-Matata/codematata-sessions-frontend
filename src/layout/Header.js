@@ -1,10 +1,16 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from "react";
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, Transition, Menu } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import CodeMatataLogo from "../resources/icons/codematata-logo.png";
 
-export default function Header() {
+// const profile = ["Your Profile", "Settings", "Sign out"];
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
+export default function Header({ authenticated, currentUser, onLogout }) {
   return (
     <Popover className="fixed bg-white z-10 w-screen mb-20 px-8 md:px-16 md:mb-40">
       {({ open }) => (
@@ -41,14 +47,66 @@ export default function Header() {
                   Create a Session
                 </a>
               </Popover.Group>
-              <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                <a
-                  href="/sign-in"
-                  className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-900 hover:bg-indigo-800"
-                >
-                  Sign in
-                </a>
-              </div>
+              {authenticated ? (
+                <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                  <Menu as="div" className="ml-3 relative">
+                    {({ open }) => (
+                      <>
+                        <div>
+                          <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                            <span className="sr-only">Open user menu</span>
+                            <img
+                              className="h-9 w-9 rounded-full"
+                              src={currentUser.imageUrl}
+                              alt={currentUser.name}
+                            />
+                          </Menu.Button>
+                        </div>
+                        <Transition
+                          show={open}
+                          as={Fragment}
+                          enter="transition ease-out duration-100"
+                          enterFrom="transform opacity-0 scale-95"
+                          enterTo="transform opacity-100 scale-100"
+                          leave="transition ease-in duration-75"
+                          leaveFrom="transform opacity-100 scale-100"
+                          leaveTo="transform opacity-0 scale-95"
+                        >
+                          <Menu.Items
+                            static
+                            className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                          >
+                            <Menu.Item className="flex items-center justify-center p-4 w-full">
+                              {({ active }) => (
+                                <button
+                                  className={classNames(
+                                    active
+                                      ? "bg-gray-900 w-9/12 hover:bg-indigo-800"
+                                      : "",
+                                    "block px-4 py-2 text-sm text-gray-700 w-9/12 hover:bg-indigo-800"
+                                  )}
+                                  onClick={onLogout}
+                                >
+                                  Sign Out
+                                </button>
+                              )}
+                            </Menu.Item>
+                          </Menu.Items>
+                        </Transition>
+                      </>
+                    )}
+                  </Menu>
+                </div>
+              ) : (
+                <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                  <a
+                    href="/sign-in"
+                    className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-900 hover:bg-indigo-800"
+                  >
+                    Sign in
+                  </a>
+                </div>
+              )}
             </div>
           </div>
 
@@ -101,23 +159,41 @@ export default function Header() {
                       Create a Session
                     </a>
                   </div>
-                  <div>
-                    <a
-                      href="/sign-in"
-                      className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-900 hover:bg-indigo-800"
-                    >
-                      Sign in
-                    </a>
-                    {/* <p className="mt-6 text-center text-base font-medium text-gray-500">
-                      Existing user?{" "}
+                  {authenticated ? (
+                    <div className="pt-4 pb-3 border-t border-gray-700">
+                      <div className="flex items-center px-5">
+                        <div className="flex-shrink-0">
+                          <img
+                            className="h-10 w-10 rounded-full"
+                            src={currentUser.imageUrl}
+                            alt={currentUser.name}
+                          />
+                        </div>
+                        <div className="ml-3">
+                          <div className="text-base font-medium leading-none text-white">
+                            {currentUser.name}
+                          </div>
+                          <div className="text-sm font-medium leading-none text-gray-400">
+                            {currentUser.email}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mt-3 px-2 space-y-1">
+                        <button className="w-full flex items-center justify-center px-2 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-900 hover:bg-indigo-800">
+                          Sign Out
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
                       <a
                         href="/sign-in"
-                        className="text-indigo-600 hover:text-indigo-500"
+                        className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-900 hover:bg-indigo-800"
                       >
                         Sign in
                       </a>
-                    </p> */}
-                  </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </Popover.Panel>
