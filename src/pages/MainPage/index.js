@@ -6,6 +6,11 @@ import HeroSection from "../../components/HeroSection";
 import EventsComponent from "../../components/EventsComponent/EventsComponent";
 
 class MainPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
     return (
       <MainDiv>
