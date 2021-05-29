@@ -82,11 +82,7 @@ class App extends Component {
         />
         <Switch>
           <Route exact path="/" component={LoaderPage} />
-          <Route
-            path="/dash"
-            currentUser={this.state.currentUser}
-            component={MainPage}
-          />
+          <Route MainPage path="/dash" component={MainPage}></Route>
           <Route path="/session" component={SessionPage} />
           <Route path="/create-session" component={CreateSession} />
           <Route
@@ -99,7 +95,7 @@ class App extends Component {
             path="/oauth2/redirect"
             component={OAuth2RedirectHandler}
           ></Route>
-          <Route path="*" component={LostPage} />
+          <Route path="*" component={LostPage}></Route>
         </Switch>
         <CookieConsent />
         <Footer />

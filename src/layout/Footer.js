@@ -148,6 +148,7 @@ const IconText = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 0.5em;
 
   @media (min-width: 850px) {
     margin-top: 0.7em;
@@ -166,4 +167,9 @@ const Icon = styled.img`
 
 const Text = styled.p`
   margin-left: 0.4em;
+  display: none;
+
+  @media (min-width: 500px) {
+    display: flex;
+  }
 `;
