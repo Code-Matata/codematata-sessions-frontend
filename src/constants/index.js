@@ -1,4 +1,4 @@
-export const API_BASE_URL = process.env.REACT_APP_BASE_URL;
+export const API_BASE_URL = "https://code-matata.herokuapp.com";
 export const ACCESS_TOKEN = "accessToken";
 
 export const OAUTH2_REDIRECT_URI = "https://codematata.netlify.app/oauth2/redirect";
