@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Router, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch, BrowserRouter } from "react-router-dom";
 import { createBrowserHistory } from "history";
 // import renderIf from "render-if";
 //layout
@@ -80,23 +80,23 @@ class App extends Component {
           onLogout={this.handleLogout}
           currentUser={this.state.currentUser}
         />
-        <Switch>
-          <Route exact path="/" component={MainPage} />
-          <Route MainPage path="/dash" component={MainPage}></Route>
-          <Route path="/session" component={SessionPage} />
-          <Route path="/create-session" component={CreateSession} />
-          <Route
-            path="/sign-in"
-            render={(props) => (
-              <SignIn authenticated={this.state.authenticated} {...props} />
-            )}
-          ></Route>
-          <Route
-            path="/oauth2/redirect"
-            component={OAuth2RedirectHandler}
-          ></Route>
-          <Route path="*" component={LostPage}></Route>
-        </Switch>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={LoaderPage} />
+            <Route MainPage path="/dash" component={MainPage} />
+            <Route path="/session" component={SessionPage} />
+            <Route path="/create-session" component={CreateSession} />
+            <Route
+              path="/sign-in"
+              render={(props) => (
+                <SignIn authenticated={this.state.authenticated} {...props} />
+              )}
+            />
+            <Route path="/oauth2/redirect" component={OAuth2RedirectHandler} />
+            <Route component={LostPage} />
+          </Switch>
+        </BrowserRouter>
+
         <CookieConsent />
         <Footer />
       </Router>
