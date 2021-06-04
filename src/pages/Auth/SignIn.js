@@ -22,7 +22,7 @@ class SignIn extends Component {
   }
   render() {
     if (this.props.authenticated) {
-      return <Redirect to={{ pathname: "/dash", from: this.props.location }} />;
+      return <Redirect to={{ pathname: "/", from: this.props.location }} />;
     }
     return (
       <MainDiv>

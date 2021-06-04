@@ -81,7 +81,7 @@ class App extends Component {
           currentUser={this.state.currentUser}
         />
         <Switch>
-          <Route exact path="/" component={LoaderPage} />
+          <Route exact path="/" component={MainPage} />
           <Route MainPage path="/dash" component={MainPage}></Route>
           <Route path="/session" component={SessionPage} />
           <Route path="/create-session" component={CreateSession} />
