@@ -70,7 +70,7 @@ class SignIn extends Component {
 export default SignIn;
 
 const MainDiv = styled.div`
-  height: 70vh;
+  height: 100vh;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
