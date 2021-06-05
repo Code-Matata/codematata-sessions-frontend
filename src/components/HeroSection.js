@@ -36,7 +36,7 @@ const MainDiv = styled.div`
 `;
 
 const TopDiv = styled.div`
-  height: 60vh;
+  height: 70vh;
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
@@ -59,7 +59,7 @@ const HeroTextDiv = styled.div`
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  margin: 2em 2em 0em 2em;
+  margin: 3em 2em 0em 2em;
 `;
 
 const HeroText = styled.p`

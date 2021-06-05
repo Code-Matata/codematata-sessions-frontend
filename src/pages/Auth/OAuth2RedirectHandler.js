@@ -17,7 +17,6 @@ class OAuth2RedirectHandler extends Component {
     const error = this.getUrlParameter("error");
     if (token) {
       localStorage.setItem(ACCESS_TOKEN, token);
-      console.log(ACCESS_TOKEN);
       return <Redirect to={{ pathname: "/dash", from: this.props.location }} />;
     } else {
       return (

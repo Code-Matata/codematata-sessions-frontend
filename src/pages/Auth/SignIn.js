@@ -20,6 +20,8 @@ class SignIn extends Component {
         });
       }, 100);
     }
+
+    console.log(localStorage.getItem("ACCESS_TOKEN"));
   }
   render() {
     if (this.props.authenticated) {
@@ -68,7 +70,7 @@ class SignIn extends Component {
 export default SignIn;
 
 const MainDiv = styled.div`
-  height: 70vh;
+  height: 100vh;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
