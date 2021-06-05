@@ -2,7 +2,7 @@
 import { Fragment } from "react";
 import { Popover, Transition, Menu } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import CodeMatataLogo from "../resources/icons/codematata-logo.png";
+import CodeMatataLogo from "../resources/codematata.svg";
 
 // const profile = ["Your Profile", "Settings", "Sign out"];
 
@@ -20,10 +20,10 @@ export default function Header({ authenticated, currentUser, onLogout }) {
               <div className="flex justify-start lg:w-0 lg:flex-1">
                 <a href="/">
                   <p className="sr-only">CodeMatata</p>
-                  <img
+                  <object
                     className="h-8 w-auto sm:h-10"
-                    src={CodeMatataLogo}
-                    alt="codematata logo"
+                    data={CodeMatataLogo}
+                    aria-label="codematata logo"
                   />
                 </a>
               </div>
