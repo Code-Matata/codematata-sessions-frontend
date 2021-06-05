@@ -10,6 +10,7 @@ class SessionPage extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    console.log("Access token", localStorage.getItem(ACCESS_TOKEN));
   }
   render() {
     return (
