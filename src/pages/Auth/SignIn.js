@@ -20,8 +20,6 @@ class SignIn extends Component {
         });
       }, 100);
     }
-
-    console.log(localStorage.getItem("ACCESS_TOKEN"));
   }
   render() {
     if (this.props.authenticated) {
