@@ -12,7 +12,7 @@ function classNames(...classes) {
 
 export default function Header({ authenticated, currentUser, onLogout }) {
   return (
-    <Popover className="fixed bg-white z-10 w-screen mb-20 px-8 md:px-16 md:mb-40">
+    <Popover className="fixed bg-white z-10 w-screen mb-20 px-4 md:px-16 md:mb-40">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -86,6 +86,14 @@ export default function Header({ authenticated, currentUser, onLogout }) {
                                     )}
                                   >
                                     {currentUser.name}
+                                  </p>
+                                  <p
+                                    className={classNames(
+                                      active ? "bg-gray-100 text-center" : "",
+                                      "block px-4 py-2 text-sm text-gray-700 text-center"
+                                    )}
+                                  >
+                                    {currentUser.email}
                                   </p>
                                   <button
                                     className={classNames(

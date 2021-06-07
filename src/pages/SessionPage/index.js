@@ -1,26 +1,58 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { colors } from "../../resources/ThemeColors";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
+import Loader from "react-loader-spinner";
 
-class SessionPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
-  componentDidMount() {
+function SessionPage() {
+  let query = useQuery();
+  var id = query.get("id");
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
     window.scrollTo(0, 0);
-    console.log("Access token", localStorage.getItem("ACCESS_TOKEN"));
-  }
-  render() {
-    return (
-      <MainDiv>
+    setIsLoading(true);
+    var config = {
+      method: "get",
+      url: `https://code-matata.herokuapp.com/api/v1/recording/${id}`,
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0IiwiaWF0IjoxNjIyOTI2ODU3LCJleHAiOjE2MjM3OTA4NTd9.V2sk93-QAdFqXXhd9T0_J1Jmf0X5A1FhiaDjqRGwtpsApdqkEBLxW0kq9RC7NQ82tm7jXMoadDudStrPS3JqMg",
+      },
+    };
+
+    axios(config)
+      .then((response) => {
+        console.log(response.data);
+        setData(response.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false);
+      });
+  }, [id]);
+  return (
+    <MainDiv>
+      {isLoading ? (
+        <LoaderDiv>
+          <Loader type="ThreeDots" color="#262a52" height={70} width={70} />
+        </LoaderDiv>
+      ) : (
         <SessionDescriptionDiv>
-          <h2>JavaScript 101 with Steve Kibuika</h2>
-          <p>A simple introduction to the fundamentals of JavaScript.</p>
+          <h2>{data.title}</h2>
+          <p>{data.description}</p>
+          <h4 style={{ display: "inline-block", float: "right" }}>
+            by {data.instructor}
+          </h4>
           <ButtonsDiv>
             <IframeDiv
-              src="https://www.youtube.com/embed/GQZ5UP49Mh0"
+              src={data.videoUrl}
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
@@ -28,9 +60,9 @@ class SessionPage extends Component {
             ></IframeDiv>
           </ButtonsDiv>
         </SessionDescriptionDiv>
-      </MainDiv>
-    );
-  }
+      )}
+    </MainDiv>
+  );
 }
 
 export default SessionPage;
@@ -61,6 +93,9 @@ const SessionDescriptionDiv = styled.div`
     text-align: left;
     font-weight: bold;
     color: ${colors.darkMainColor};
+    @media (min-width: 600px){
+      font-size: 1.5em;
+    }
     @media (min-width: 800px) {
       font-size: 1.5em;
     }
@@ -71,10 +106,22 @@ const SessionDescriptionDiv = styled.div`
     text-align: left;
     margin-top: 0.7em;
     colors: ${colors.mainColor};
+    @media (min-width: 600px){
+      font-size: 1em;
+    }
     @media (min-width: 800px) {
       font-size: 1.1em;
     }
   }
+
+> h4 {
+  display: inline-block;
+  float: right:
+  font-size: 0.9em;
+  colors: ${colors.mainColor};
+  margin-top: 0.5em;
+}
+
   @media (min-width: 480px) {
     width: 90%;
   }
@@ -104,4 +151,12 @@ const IframeDiv = styled.iframe`
   @media (min-width: 800px) {
     height: 350px;
   }
+`;
+
+const LoaderDiv = styled.div`
+  height: 70vh;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
 `;
