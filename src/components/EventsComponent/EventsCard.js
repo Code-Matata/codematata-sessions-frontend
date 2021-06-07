@@ -79,7 +79,7 @@ const ImageDiv = styled.div`
     object-fit: contain;
   }
   @media (min-width: 800px) {
-    height: 12.5em;
+    height: 14em;
   }
 `;
 
