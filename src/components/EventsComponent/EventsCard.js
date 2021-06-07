@@ -1,43 +1,45 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import { colors } from "../../resources/ThemeColors";
-import CodeImage from "../../resources/code-1.jpg";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-class EventsCard extends Component {
-  state = {};
-  redirect = (name) => {
-    this.props.history.push({ pathname: "/session", search: `?name=${name}` });
-  };
-  render() {
-    return (
-      <MainCardDiv onClick={() => this.redirect("js")}>
-        <ImageDiv>
-          <img src={CodeImage} alt="session" loading="lazy"></img>
-        </ImageDiv>
-        <EventDescriptionDiv>
-          <DateDiv>
-            <EventDate>
-              Sep
-              <br />
-              18
-            </EventDate>
-          </DateDiv>
-          <TextDescriptionDiv>
-            <DescriptionTitle>
-              JavaScript 101 with Steve Kibuika
-            </DescriptionTitle>
-            <Description>
-              A simple introduction to the fundamentals of JavaScript.
-            </Description>
-          </TextDescriptionDiv>
-        </EventDescriptionDiv>
-      </MainCardDiv>
-    );
-  }
+function EventsCard({ props }) {
+  const history = useHistory();
+
+  return (
+    <MainCardDiv
+      onClick={() =>
+        history.push({
+          pathname: "/session",
+          search: `?name=${props.title}&id=${props.id}`,
+        })
+      }
+    >
+      <ImageDiv>
+        <img
+          src={props.imageUrl.url}
+          alt={props.description}
+          loading="lazy"
+        ></img>
+      </ImageDiv>
+      <EventDescriptionDiv>
+        {/* <DateDiv>
+          <EventDate>
+            Sep
+            <br />
+            18
+          </EventDate>
+        </DateDiv> */}
+        <TextDescriptionDiv>
+          <DescriptionTitle>{props.title}</DescriptionTitle>
+          <Description>{props.description}</Description>
+        </TextDescriptionDiv>
+      </EventDescriptionDiv>
+    </MainCardDiv>
+  );
 }
 
-export default withRouter(EventsCard);
+export default EventsCard;
 
 const MainCardDiv = styled.button`
   height: 17em;
@@ -61,7 +63,7 @@ const MainCardDiv = styled.button`
 `;
 
 const ImageDiv = styled.div`
-  height: 10.5em;
+  height: 12em;
   width: 100%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -74,6 +76,7 @@ const ImageDiv = styled.div`
     flex-shrink: 0;
     min-width: 100%;
     min-height: 100%;
+    object-fit: contain;
   }
   @media (min-width: 800px) {
     height: 12.5em;
@@ -88,17 +91,17 @@ const EventDescriptionDiv = styled.div`
   justify-content: space-between;
 `;
 
-const DateDiv = styled.div`
-  width: 1.5em;
-`;
-const EventDate = styled.p`
-  line-height: 2;
-  font-size: 1em;
-  font-weight: 650;
-  color: ${colors.darkMainColor};
-  padding-top: 0.2em;
-  padding-left: 0.2em;
-`;
+// const DateDiv = styled.div`
+//   width: 1.5em;
+// `;
+// const EventDate = styled.p`
+//   line-height: 2;
+//   font-size: 1em;
+//   font-weight: 650;
+//   color: ${colors.darkMainColor};
+//   padding-top: 0.2em;
+//   padding-left: 0.2em;
+// `;
 
 const TextDescriptionDiv = styled.div`
   width: 14.5em;
