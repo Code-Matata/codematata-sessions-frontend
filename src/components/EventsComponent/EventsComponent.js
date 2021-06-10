@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import EventsCard from "./EventsCard";
-import EventsComponentHeader from "./EventsComponentHeader";
 import axios from "axios";
 import Loader from "react-loader-spinner";
+import RecordingsDiv from "./DataDispplaySections/RecordingsDiv";
+import renderIf from "render-if";
 
-function EventsComponent() {
+function EventsComponent({ activeTab }) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -32,18 +32,17 @@ function EventsComponent() {
   }, []);
   return (
     <MainSection>
-      <EventsComponentHeader />
-      {isLoading ? (
+      {/* {isLoading ? (
         <LoaderDiv>
           <Loader type="ThreeDots" color="#262a52" height={50} width={50} />
-        </LoaderDiv>
-      ) : (
-        <EventsComponentDiv>
-          {data.map((recording) => (
-            <EventsCard props={recording} key={recording.id} />
-          ))}
-        </EventsComponentDiv>
+        </LoaderDiv> */}
+      {/* // ) : ( */}
+      {renderIf(activeTab === "events")(<p>Events</p>)}
+      {renderIf(activeTab === "recordings")(
+        <RecordingsDiv data={data} loading={isLoading} />
       )}
+
+      {/* // )} */}
     </MainSection>
   );
 }
@@ -54,21 +53,7 @@ const MainSection = styled.section`
   margin-top: 2em;
   color: black;
   @media (min-width: 800px) {
-    width: 95vw;
-  }
-`;
-
-const EventsComponentDiv = styled.div`
-  padding: 1em 1em 2em 1em;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-content: space-around;
-
-  @media (min-width: 800px) {
-    padding: 1em 4em 2em 4em;
-    align-items: center;
-    justify-content: center;
+    width: 99vw;
   }
 `;
 

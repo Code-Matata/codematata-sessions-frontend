@@ -75,9 +75,10 @@ const MainDiv = styled.div`
   }
 
   @media (min-width: 600px) {
-    height: 10vh;
+    height: 15vh;
     width: 95%;
     margin: 0 2em 1em 2em;
     border-radius: 8px;
+    padding: 1.5em;
   }
 `;

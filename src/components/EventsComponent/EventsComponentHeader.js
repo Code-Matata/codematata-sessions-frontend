@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { colors } from "../../resources/ThemeColors";
 
-function EventsComponentHeader() {
+function EventsComponentHeader({ handleActiveTab }) {
   return (
     <MainDiv>
-      <Title>Upcoming Events</Title>
+      <Button onClick={() => handleActiveTab("events")}>Live Events</Button>
+      <Button onClick={() => handleActiveTab("recordings")}>Recordings</Button>
     </MainDiv>
   );
 }
@@ -13,9 +14,12 @@ function EventsComponentHeader() {
 export default EventsComponentHeader;
 
 const MainDiv = styled.div`
-  margin: 0 0 0 1.6em;
+  padding: 1em 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   @media (min-width: 800px) {
-    margin: 0 0 0 12em;
+    padding: 1em 0 0 0;
   }
 `;
 
@@ -23,8 +27,23 @@ const Title = styled.h3`
   font-size: 1.4em;
   font-weight: 700;
   color: ${colors.darkMainColor};
+`;
 
-  @media (min-width: 800px) {
-    font-size: 1.7em;
+const Button = styled.button`
+  width: 40%;
+  margin: 0.3em;
+  height: 3em;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: ${colors.white};
+  background-color: ${colors.darkMainColor};
+
+  :hover {
+    background-color: #93329e;
+  }
+
+  :focus {
+    background-color: #93329e;
+    outline: none;
   }
 `;

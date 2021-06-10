@@ -4,18 +4,25 @@ import { colors } from "../../resources/ThemeColors";
 //layout
 import HeroSection from "../../components/HeroSection";
 import EventsComponent from "../../components/EventsComponent/EventsComponent";
+import EventsComponentHeader from "../../components/EventsComponent/EventsComponentHeader";
 
 class MainPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { activeTab: "events" };
   }
+
+  handleActiveTab = (tabName) => {
+    this.setState({ activeTab: tabName });
+    console.log("active tab", tabName);
+  };
 
   render() {
     return (
       <MainDiv>
         <HeroSection />
-        <EventsComponent />
+        <EventsComponentHeader handleActiveTab={this.handleActiveTab} />
+        <EventsComponent activeTab={this.state.activeTab} />
       </MainDiv>
     );
   }
