@@ -5,7 +5,12 @@ import { colors } from "../../resources/ThemeColors";
 function EventsComponentHeader({ handleActiveTab }) {
   return (
     <MainDiv>
-      <Button onClick={() => handleActiveTab("events")}>Live Events</Button>
+      <Button
+        onClick={() => handleActiveTab("events")}
+        style={{ borderLeftColor: "white" }}
+      >
+        Live Events
+      </Button>
       <Button onClick={() => handleActiveTab("recordings")}>Recordings</Button>
     </MainDiv>
   );
@@ -31,7 +36,6 @@ const Title = styled.h3`
 
 const Button = styled.button`
   width: 40%;
-  margin: 0.3em;
   height: 3em;
   font-size: 1.1em;
   font-weight: 700;
