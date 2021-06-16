@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { colors } from "../resources/ThemeColors";
 import CodeImage from "../resources/code-1.jpg";
 import TypeEffect from "./TypeEffect";
-import SearchCard from "../components/SearchComponent";
+// import SearchCard from "../components/SearchComponent";
 
 function HeroSection() {
   return (
@@ -13,7 +13,7 @@ function HeroSection() {
           <HeroText>Made for those who &nbsp;</HeroText>
           <TypeEffect />
         </HeroTextDiv>
-        <SearchCard />
+        {/* <SearchCard /> */}
       </TopDiv>
     </MainDiv>
   );

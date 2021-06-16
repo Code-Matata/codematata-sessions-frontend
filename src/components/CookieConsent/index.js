@@ -50,27 +50,35 @@ const MainDiv = styled.div`
   background-color: ${colors.mainColor};
   color: ${colors.white};
   height: 15vh;
-  width: 100%;
+  width: 85%;
   padding: 1em;
   display: ${(props) => props.divDisplay || "flex"};
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+  margin: 0 2em 1em 2em;
+  border-radius: 8px;
 
   > p {
     font-size: 0.9em;
   }
 
   > button {
-    background-color: ${colors.darkMainColor};
-    color: ${colors.white};
+    background-color: ${colors.white};
+    color: ${colors.darkMainColor};
     border: 1px solid gray;
-    padding: 0.5em;
+    padding: 0.5em 1em 0.5em 1em;
     font-size: 0.8em;
     margin-top: 0.6em;
+    border-radius: 8px;
+    font-weight: 800;
   }
 
   @media (min-width: 600px) {
-    height: 10vh;
+    height: 15vh;
+    width: 95%;
+    margin: 0 2em 1em 2em;
+    border-radius: 8px;
+    padding: 1.5em;
   }
 `;
