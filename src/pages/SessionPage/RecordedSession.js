@@ -9,7 +9,7 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-function SessionPage() {
+function RecordedSession() {
   let query = useQuery();
   var id = query.get("id");
   const [data, setData] = useState({});
@@ -22,7 +22,7 @@ function SessionPage() {
       url: `https://code-matata.herokuapp.com/api/v1/recording/${id}`,
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0IiwiaWF0IjoxNjIyOTI2ODU3LCJleHAiOjE2MjM3OTA4NTd9.V2sk93-QAdFqXXhd9T0_J1Jmf0X5A1FhiaDjqRGwtpsApdqkEBLxW0kq9RC7NQ82tm7jXMoadDudStrPS3JqMg",
+          "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0IiwiaWF0IjoxNjIzNzk0NTQxLCJleHAiOjE2MjQ2NTg1NDF9.24NdnfByumQqeBkehidl_9PMyd_yALg72iThGqH9GqjfQB5huf0SvGaQWFJrnpn3ItjNY8BkW0vy5q0l_-eOpQ",
       },
     };
 
@@ -65,7 +65,7 @@ function SessionPage() {
   );
 }
 
-export default SessionPage;
+export default RecordedSession;
 
 const MainDiv = styled.div`
   height: auto;

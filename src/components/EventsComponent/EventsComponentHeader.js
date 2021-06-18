@@ -23,8 +23,10 @@ const MainDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: -4em;
   @media (min-width: 800px) {
     padding: 1em 0 0 0;
+    margin-top: -1em;
   }
 `;
 

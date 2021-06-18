@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import EventsCard from "../EventsCard";
+import { RecordingsCard } from "../DisplayCards";
 import Loader from "react-loader-spinner";
 
 function RecordingsDiv() {
@@ -38,7 +38,7 @@ function RecordingsDiv() {
       ) : (
         <EventsComponentDiv>
           {data.map((recording) => (
-            <EventsCard props={recording} key={recording.id} />
+            <RecordingsCard props={recording} key={recording.id} />
           ))}
         </EventsComponentDiv>
       )}

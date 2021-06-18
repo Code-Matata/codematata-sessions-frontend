@@ -9,7 +9,8 @@ import Footer from "./layout/Footer";
 
 // pages
 import MainPage from "./pages/MainPage/index";
-import SessionPage from "./pages/SessionPage";
+import RedordedSession from "./pages/SessionPage/RecordedSession";
+import EventsSession from "./pages/SessionPage/EventsSession";
 import LoaderPage from "./pages/LoaderPage/LoaderPage";
 import SignIn from "./pages/Auth/SignIn";
 import LostPage from "./pages/404/404";
@@ -84,7 +85,8 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={LoaderPage} />
             <Route MainPage path="/dash" component={MainPage} />
-            <Route path="/session" component={SessionPage} />
+            <Route path="/recorded-session" component={RedordedSession} />
+            <Route path="/live-session" component={EventsSession} />
             <Route path="/create-session" component={CreateSession} />
             <Route
               path="/sign-in"

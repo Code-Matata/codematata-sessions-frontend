@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import RecordingsDiv from "./DataDispplaySections/RecordingsDiv";
+import EventsDiv from "./DataDispplaySections/EventsDiv";
 import renderIf from "render-if";
 
 function EventsComponent({ activeTab }) {
   return (
     <MainSection>
-      {renderIf(activeTab === "events")(<RecordingsDiv />)}
+      {renderIf(activeTab === "events")(<EventsDiv />)}
       {renderIf(activeTab === "recordings")(<RecordingsDiv />)}
     </MainSection>
   );
