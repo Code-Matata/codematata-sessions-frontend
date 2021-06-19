@@ -36,7 +36,7 @@ const MainDiv = styled.div`
 `;
 
 const TopDiv = styled.div`
-  height: 70vh;
+  height: 40vh;
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
@@ -50,7 +50,7 @@ const TopDiv = styled.div`
   position: relative;
   z-index: 0;
   @media (min-width: 800px) {
-    height: 70vh;
+    height: 50vh;
   }
 `;
 

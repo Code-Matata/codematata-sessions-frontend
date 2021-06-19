@@ -3,14 +3,14 @@ import styled from "styled-components";
 import { colors } from "../../resources/ThemeColors";
 import { useHistory } from "react-router-dom";
 
-function EventsCard({ props }) {
+export function RecordingsCard({ props }) {
   const history = useHistory();
 
   return (
     <MainCardDiv
       onClick={() =>
         history.push({
-          pathname: "/session",
+          pathname: "/recorded-session",
           search: `?name=${props.title}&id=${props.id}`,
         })
       }
@@ -23,13 +23,6 @@ function EventsCard({ props }) {
         ></img>
       </ImageDiv>
       <EventDescriptionDiv>
-        {/* <DateDiv>
-          <EventDate>
-            Sep
-            <br />
-            18
-          </EventDate>
-        </DateDiv> */}
         <TextDescriptionDiv>
           <DescriptionTitle>{props.title}</DescriptionTitle>
           <Description>{props.description}</Description>
@@ -39,7 +32,39 @@ function EventsCard({ props }) {
   );
 }
 
-export default EventsCard;
+export function EventsCard({ props }) {
+  const history = useHistory();
+
+  return (
+    <MainCardDiv
+      onClick={() =>
+        history.push({
+          pathname: "/live-session",
+          search: `?name=${props.title}&id=${props.id}`,
+        })
+      }
+    >
+      <ImageDiv>
+        <img
+          src={props.imageUrl.url}
+          alt={props.description}
+          loading="lazy"
+        ></img>
+      </ImageDiv>
+      <TopDiv>
+        <TypeDiv>
+          <Type>{props.date}</Type>
+        </TypeDiv>
+      </TopDiv>
+      <EventDescriptionDiv>
+        <TextDescriptionDiv>
+          <DescriptionTitle>{props.title}</DescriptionTitle>
+          <Description>{props.description}</Description>
+        </TextDescriptionDiv>
+      </EventDescriptionDiv>
+    </MainCardDiv>
+  );
+}
 
 const MainCardDiv = styled.button`
   height: 17em;
@@ -49,6 +74,8 @@ const MainCardDiv = styled.button`
   margin: 1em 1em 2em 1em;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   transition: box-shadow 500ms;
+  position: relative;
+
   :hover {
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   }
@@ -105,7 +132,7 @@ const EventDescriptionDiv = styled.div`
 
 const TextDescriptionDiv = styled.div`
   width: 14.5em;
-  margin-left: 1em;
+  margin-left: 0.5em;
   margin-top: 0.4em;
   display: flex;
   flex-flow: column nowrap;
@@ -123,4 +150,34 @@ const Description = styled.p`
   font-weight: 400;
   color: ${colors.mainColor};
   text-align: left;
+`;
+
+const TopDiv = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 0.4em;
+  margin-top: 0.2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+`;
+
+const TypeDiv = styled.div`
+  height: 1.5em;
+  width: auto;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  border-radius: 4px;
+  margin-right: ${(props) => (props.space ? "0.3em" : "0")};
+  background-color: white;
+  display: flex;
+  align-items: center;
+`;
+
+const Type = styled.p`
+  font-size: 0.7em;
+  font-weight: 600;
+  color: ${colors.mainColor};
 `;

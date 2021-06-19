@@ -8,10 +8,10 @@ const Typer = () => {
       text={[
         " Design UI/UX.",
         " code UI/UX.",
-        "build back-ends",
-        " Network.",
-        "analyse data",
-        "teach machines to learn",
+        " build back-ends",
+        " configure Networks.",
+        " analyse data",
+        " build ML algorithms",
       ]}
       className="typing-text"
       speed={30}
