@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import { RecordingsCard } from "../DisplayCards";
 import Loader from "react-loader-spinner";
+import EmptyData from "./EmptyData";
 
 function RecordingsDiv() {
   const [data, setData] = useState([]);
@@ -12,10 +13,6 @@ function RecordingsDiv() {
     var config = {
       method: "get",
       url: "https://code-matata.herokuapp.com/api/v1/recording/all",
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0IiwiaWF0IjoxNjIzNzk0NTQxLCJleHAiOjE2MjQ2NTg1NDF9.24NdnfByumQqeBkehidl_9PMyd_yALg72iThGqH9GqjfQB5huf0SvGaQWFJrnpn3ItjNY8BkW0vy5q0l_-eOpQ",
-      },
     };
 
     axios(config)
@@ -36,11 +33,17 @@ function RecordingsDiv() {
           <Loader type="ThreeDots" color="#262a52" height={50} width={50} />
         </LoaderDiv>
       ) : (
-        <EventsComponentDiv>
-          {data.map((recording) => (
-            <RecordingsCard props={recording} key={recording.id} />
-          ))}
-        </EventsComponentDiv>
+        <>
+          {data.length > 0 ? (
+            <EventsComponentDiv>
+              {data.map((recording) => (
+                <RecordingsCard props={recording} key={recording.id} />
+              ))}
+            </EventsComponentDiv>
+          ) : (
+            <EmptyData />
+          )}
+        </>
       )}
     </>
   );

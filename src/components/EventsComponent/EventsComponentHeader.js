@@ -30,11 +30,11 @@ const MainDiv = styled.div`
   }
 `;
 
-const Title = styled.h3`
-  font-size: 1.4em;
-  font-weight: 700;
-  color: ${colors.darkMainColor};
-`;
+// const Title = styled.h3`
+//   font-size: 1.4em;
+//   font-weight: 700;
+//   color: ${colors.darkMainColor};
+// `;
 
 const Button = styled.button`
   width: 40%;
