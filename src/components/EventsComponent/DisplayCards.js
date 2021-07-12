@@ -67,7 +67,7 @@ export function EventsCard({ props }) {
 }
 
 const MainCardDiv = styled.button`
-  height: 17em;
+  height: auto;
   width: 16em;
   border-radius: 5px;
   background-color: ${colors.white};
@@ -84,7 +84,7 @@ const MainCardDiv = styled.button`
   }
 
   @media (min-width: 800px) {
-    height: 19em;
+    height: auto;
     width: 18em;
   }
 `;
@@ -116,6 +116,11 @@ const EventDescriptionDiv = styled.div`
   flex-flow: row nowrap;
   align-items: flex-start;
   justify-content: space-between;
+  height: auto;
+
+  @media (min-width: 800px) {
+    height: auto;
+  }
 `;
 
 // const DateDiv = styled.div`

@@ -22,7 +22,7 @@ function RecordedSession() {
       url: `https://code-matata.herokuapp.com/api/v1/recording/${id}`,
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0IiwiaWF0IjoxNjIzNzk0NTQxLCJleHAiOjE2MjQ2NTg1NDF9.24NdnfByumQqeBkehidl_9PMyd_yALg72iThGqH9GqjfQB5huf0SvGaQWFJrnpn3ItjNY8BkW0vy5q0l_-eOpQ",
+          "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiaWF0IjoxNjI2MTAxNjA1LCJleHAiOjE2MjY5NjU2MDV9.R8JEJhOK03c5-01mQbSnUjrnGjNgjlls0PtPxTus-chX1XfRFrW-RIB-7ocYcV1IE7zudPPS80C9q74EnlmjLg",
       },
     };
 
@@ -48,7 +48,7 @@ function RecordedSession() {
           <h2>{data.title}</h2>
           <p>{data.description}</p>
           <h4 style={{ display: "inline-block", float: "right" }}>
-            by {data.instructor}
+            {/* by {data.instructor.name} */}
           </h4>
           <ButtonsDiv>
             <IframeDiv
@@ -149,7 +149,7 @@ const IframeDiv = styled.iframe`
     height: 300px;
   }
   @media (min-width: 800px) {
-    height: 350px;
+    height: 450px;
   }
 `;
 
