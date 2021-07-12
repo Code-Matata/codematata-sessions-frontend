@@ -1,8 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import AddToCalendar from "react-add-to-calendar";
 
-class Example extends React.Component {
-  static displayName = "Example";
+class CalendarEventButton extends Component {
   state = {
     event: {
       title: "Sample Event",
@@ -18,4 +17,4 @@ class Example extends React.Component {
   }
 }
 
-export default Example;
+export default CalendarEventButton;
