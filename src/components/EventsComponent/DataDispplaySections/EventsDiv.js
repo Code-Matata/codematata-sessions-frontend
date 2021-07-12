@@ -12,13 +12,13 @@ function EventsDiv() {
     setIsLoading(true);
     var config = {
       method: "get",
-      url: "https://code-matata.herokuapp.com/api/v1/recording/all",
+      url: "https://code-matata.herokuapp.com/api/v1/event/all",
     };
 
     axios(config)
       .then((response) => {
         // console.log(response.data);
-        setData(response.data.recordings);
+        setData(response.data.events);
         setIsLoading(false);
       })
       .catch((error) => {
