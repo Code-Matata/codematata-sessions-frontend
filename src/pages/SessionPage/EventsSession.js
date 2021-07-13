@@ -14,7 +14,7 @@ function EventsSession() {
   let query = useQuery();
   var id = query.get("id");
   const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     window.scrollTo(0, 0);
     setIsLoading(true);
@@ -56,7 +56,9 @@ function EventsSession() {
                   loading="lazy"
                 ></img>
                 <DateDiv>
-                  <EventDate>07/06/2021</EventDate>
+                  {/* <EventDate>
+                    {data.date.eventMonth} {data.date.date}
+                  </EventDate> */}
                 </DateDiv>
               </ImageDiv>
               <SessionDescriptionDiv>
@@ -100,15 +102,14 @@ const MainDiv = styled.div`
 `;
 
 const ImageDiv = styled.div`
-  background-color: ${colors.gray};
-  height: 25vh;
+  background-color: ${colors.white};
+  height: auto;
   width: 100%;
   border-radius: 7px;
   position: relative;
-
   > img {
     flex-shrink: 0;
-    object-fit: cover;
+    object-fit: contain;
     height: 100%;
     width: 100%;
     border-radius: 7px;

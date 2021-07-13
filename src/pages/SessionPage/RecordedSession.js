@@ -13,7 +13,7 @@ function RecordedSession() {
   let query = useQuery();
   var id = query.get("id");
   const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     window.scrollTo(0, 0);
     setIsLoading(true);
