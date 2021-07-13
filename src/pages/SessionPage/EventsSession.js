@@ -1,54 +1,81 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import CodeImage from "../../resources/code-1.jpg";
+import axios from "axios";
 import { colors } from "../../resources/ThemeColors";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { useLocation } from "react-router-dom";
+import Loader from "react-loader-spinner";
 
-class EventsSession extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      copied: false,
-    };
-  }
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
-  componentDidMount() {
+function EventsSession() {
+  let query = useQuery();
+  var id = query.get("id");
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
     window.scrollTo(0, 0);
-  }
-  render() {
-    return (
-      <MainDiv>
-        <ImageDiv>
-          <img src={CodeImage} alt="code" loading="lazy"></img>
-          <DateDiv>
-            <EventDate>07/06/2021</EventDate>
-          </DateDiv>
-        </ImageDiv>
-        <SessionDescriptionDiv>
-          <h2>JavaScript 101</h2>
-          <p>A simple introduction to the fundamentals of JavaScript.</p>
-          <h4>Steve Kibuika</h4>
-          <ButtonsDiv>
-            {this.state.copied ? (
-              <p style={{ color: "#93329e", fontWeight: "500" }}>
-                Link copied successfully.
-              </p>
-            ) : (
-              <p>Link to the event</p>
-            )}
+    setIsLoading(true);
+    var config = {
+      method: "get",
+      url: `https://code-matata.herokuapp.com/api/v1/event/${id}`,
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiaWF0IjoxNjI2MTAxNjA1LCJleHAiOjE2MjY5NjU2MDV9.R8JEJhOK03c5-01mQbSnUjrnGjNgjlls0PtPxTus-chX1XfRFrW-RIB-7ocYcV1IE7zudPPS80C9q74EnlmjLg",
+      },
+    };
 
-            <LinkInput>https://meet.google.com/xoa-dpjs-kzd</LinkInput>
-            <CopyToClipboard
-              text="link here"
-              onCopy={() => this.setState({ copied: true })}
-            >
-              <ClipBoardButton>Copy link to clipboard</ClipBoardButton>
-            </CopyToClipboard>
-          </ButtonsDiv>
-        </SessionDescriptionDiv>
-      </MainDiv>
-    );
-  }
+    axios(config)
+      .then((response) => {
+        setData(response.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false);
+      });
+  }, [id]);
+  return (
+    <>
+      {isLoading ? (
+        <LoaderDiv>
+          <Loader type="ThreeDots" color="#262a52" height={70} width={70} />
+        </LoaderDiv>
+      ) : (
+        <>
+          {data.length > 0 ? (
+            <MainDiv>no data</MainDiv>
+          ) : (
+            <MainDiv>
+              <ImageDiv>
+                <img
+                  src={data.imageUrl.url}
+                  alt={data.description}
+                  loading="lazy"
+                ></img>
+                <DateDiv>
+                  <EventDate>07/06/2021</EventDate>
+                </DateDiv>
+              </ImageDiv>
+              <SessionDescriptionDiv>
+                <h2>{data.title}</h2>
+                <p>{data.description}</p>
+                <h4>{data.instructor.name}</h4>
+                <ButtonsDiv>
+                  <LinkInput>{data.meetUrl}</LinkInput>
+                  <CopyToClipboard text="link here">
+                    <ClipBoardButton>Copy link to clipboard</ClipBoardButton>
+                  </CopyToClipboard>
+                </ButtonsDiv>
+              </SessionDescriptionDiv>
+            </MainDiv>
+          )}
+        </>
+      )}
+    </>
+  );
 }
 
 export default EventsSession;
@@ -111,7 +138,7 @@ const DateDiv = styled.div`
   top: 3px;
   left: 3px;
   height: auto;
-  background-color: ${colors.white};
+  background-color: ${colors.mainColor};
   border-radius: 7px;
   display: flex;
   flex-flow: column nowrap;
@@ -129,7 +156,7 @@ const EventDate = styled.p`
   font-size: 0.8em;
   font-weight: 750;
   padding: 0.2em;
-  color: ${colors.darkMainColor};
+  color: ${colors.white};
   text-align: center;
   @media (min-width: 480px) {
     font-height: 0.7em;
@@ -189,7 +216,7 @@ const SessionDescriptionDiv = styled.div`
 
 const ButtonsDiv = styled.div`
   height: auto;
-  width: 50%;
+  width: 80%;
   margin-top: 4em;
   display: flex;
   flex-flow: column nowrap;
@@ -202,7 +229,7 @@ const ButtonsDiv = styled.div`
 const LinkInput = styled.div`
   margin-top: 1em;
   width: auto;
-  height: 2em;
+  height: auto;
   background-color: ${colors.white};
   color: ${colors.mainColor};
   padding-left: 0.5em;
@@ -227,4 +254,12 @@ const ClipBoardButton = styled.button`
   :focus {
     outline: none;
   }
+`;
+
+const LoaderDiv = styled.div`
+  height: 70vh;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
 `;

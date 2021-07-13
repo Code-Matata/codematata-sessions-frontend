@@ -28,7 +28,6 @@ function RecordedSession() {
 
     axios(config)
       .then((response) => {
-        console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       })
@@ -48,7 +47,7 @@ function RecordedSession() {
           <h2>{data.title}</h2>
           <p>{data.description}</p>
           <h4 style={{ display: "inline-block", float: "right" }}>
-            {/* by {data.instructor.name} */}
+            by {data.instructor.name}
           </h4>
           <ButtonsDiv>
             <IframeDiv
