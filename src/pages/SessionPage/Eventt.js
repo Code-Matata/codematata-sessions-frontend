@@ -5,22 +5,26 @@ import { colors } from "../../resources/ThemeColors";
 export default function Eventt({ eventId }) {
   return (
     <MainDiv>
-      <noscript>
-        <a
-          href="https://www.eventbrite.com/e/html-css-for-beginners-tickets-163175292693"
-          rel="noopener noreferrer"
-          target="_blank"
-        ></a>
-      </noscript>
-      <button id="eventbrite-widget-modal-trigger-163175292693" type="button">
-        Buy Tickets
-      </button>
-      <noscript>Buy Tickets on Eventbrite</noscript>{" "}
+      <noscript></noscript>
+
+      <a
+        href={`https://www.eventbrite.com/e/html-css-for-beginners-tickets-${eventId}`}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <Button id="eventbrite-widget-modal-trigger-163175292693" type="button">
+          Get your FREE ticket here.
+        </Button>
+      </a>
+
+      <noscript>Buy Tickets on Eventbrite</noscript>
+
       <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
+
       <script
         dangerouslySetInnerHTML={{
           __html: `
-    var exampleCallback = function() {
+            var exampleCallback = function() {
         console.log('Order complete!');
     };
 
@@ -31,7 +35,6 @@ export default function Eventt({ eventId }) {
         modalTriggerElementId: 'eventbrite-widget-modal-trigger-163175292693',
         onOrderComplete: exampleCallback
     });
-
         `,
         }}
       />
