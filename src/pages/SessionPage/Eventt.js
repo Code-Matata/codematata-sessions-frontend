@@ -5,7 +5,7 @@ import { colors } from "../../resources/ThemeColors";
 export default function Eventt({ eventId }) {
   return (
     <MainDiv>
-      {/* <noscript></noscript>
+      <noscript></noscript>
 
       <a
         href={`https://www.eventbrite.com/e/html-css-for-beginners-tickets-${eventId}`}
@@ -19,9 +19,6 @@ export default function Eventt({ eventId }) {
 
       <noscript>Buy Tickets on Eventbrite</noscript>
 
-      <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script> */}
-
-      <div id="eventbrite-widget-container-163175292693"></div>
       <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
 
       <script
@@ -32,14 +29,11 @@ export default function Eventt({ eventId }) {
     };
 
     window.EBWidgets.createWidget({
-        // Required
         widgetType: 'checkout',
         eventId: '163175292693',
-        iframeContainerId: 'eventbrite-widget-container-163175292693',
-
-        // Optional
-        iframeContainerHeight: 425,  // Widget height in pixels. Defaults to a minimum of 425px if not provided
-        onOrderComplete: exampleCallback  // Method called when an order has successfully completed
+        modal: true,
+        modalTriggerElementId: 'eventbrite-widget-modal-trigger-163175292693',
+        onOrderComplete: exampleCallback
     });
         `,
         }}
