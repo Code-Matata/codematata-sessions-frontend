@@ -35,7 +35,7 @@ function RecordedSession() {
         console.log(error);
         setIsLoading(false);
       });
-  }, [id]);
+  }, [id, accessToken]);
   return (
     <MainDiv>
       {isLoading ? (

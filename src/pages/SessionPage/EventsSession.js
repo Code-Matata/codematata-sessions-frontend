@@ -37,7 +37,7 @@ function EventsSession() {
         console.log(error);
         setIsLoading(false);
       });
-  }, [id]);
+  }, [id, accessToken]);
   return (
     <>
       {isLoading ? (
