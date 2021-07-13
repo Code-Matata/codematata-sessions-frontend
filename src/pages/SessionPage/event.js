@@ -6,18 +6,17 @@ export default function event() {
   };
 
   window.EBWidgets.createWidget({
-    // Required
     widgetType: "checkout",
     eventId: "163175292693",
-    iframeContainerId: "eventbrite-widget-container-163175292693",
-
-    // Optional
-    iframeContainerHeight: 425, // Widget height in pixels. Defaults to a minimum of 425px if not provided
-    onOrderComplete: exampleCallback, // Method called when an order has successfully completed
+    modal: true,
+    modalTriggerElementId: "eventbrite-widget-modal-trigger-163175292693",
+    onOrderComplete: exampleCallback,
   });
   return (
-    <div>
-      <div id="eventbrite-widget-container-163175292693"></div>
-    </div>
+    <>
+      <button id="eventbrite-widget-modal-trigger-163175292693" type="button">
+        Buy Tickets
+      </button>
+    </>
   );
 }
