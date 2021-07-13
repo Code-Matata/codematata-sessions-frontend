@@ -18,7 +18,7 @@ function EventsDiv() {
     axios(config)
       .then((response) => {
         // console.log(response.data);
-        setData(response.data.events);
+        setData(response.data.events.reverse());
         setIsLoading(false);
       })
       .catch((error) => {
@@ -60,7 +60,7 @@ const EventsComponentDiv = styled.div`
 
   @media (min-width: 800px) {
     padding: 1em 4em 2em 4em;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
   }
 `;

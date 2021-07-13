@@ -53,7 +53,8 @@ export function EventsCard({ props }) {
       </ImageDiv>
       <TopDiv>
         <TypeDiv>
-          <Type>{props.date}</Type>
+          <Type>{props.date.eventMonth}</Type>
+          <Type>{props.date.date}</Type>
         </TypeDiv>
       </TopDiv>
       <EventDescriptionDiv>
@@ -164,25 +165,27 @@ const TopDiv = styled.div`
   margin-right: 0.4em;
   margin-top: 0.2em;
   display: flex;
+  flex-flow: column nowrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   z-index: 1;
 `;
 
 const TypeDiv = styled.div`
-  height: 1.5em;
+  height: auto;
   width: auto;
   padding-left: 0.5em;
   padding-right: 0.5em;
-  border-radius: 4px;
+  border-radius: 5px;
   margin-right: ${(props) => (props.space ? "0.3em" : "0")};
-  background-color: white;
+  background-color: ${colors.darkMainColor};
   display: flex;
+  flex-flow: column nowrap;
   align-items: center;
 `;
 
 const Type = styled.p`
-  font-size: 0.7em;
+  font-size: 1em;
   font-weight: 600;
-  color: ${colors.mainColor};
+  color: ${colors.white};
 `;
