@@ -5,6 +5,7 @@ import { colors } from "../../resources/ThemeColors";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useLocation } from "react-router-dom";
 import Loader from "react-loader-spinner";
+import event from "./event";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -71,6 +72,7 @@ function EventsSession() {
                     <ClipBoardButton>Copy link to clipboard</ClipBoardButton>
                   </CopyToClipboard>
                 </ButtonsDiv>
+                <event />
               </SessionDescriptionDiv>
             </MainDiv>
           )}
