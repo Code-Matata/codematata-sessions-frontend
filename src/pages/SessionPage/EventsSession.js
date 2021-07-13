@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { colors } from "../../resources/ThemeColors";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+// import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useLocation } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import Eventt from "./Eventt";
@@ -57,9 +57,9 @@ function EventsSession() {
                   loading="lazy"
                 ></img>
                 <DateDiv>
-                  {/* <EventDate>
+                  <EventDate>
                     {data.date.eventMonth} {data.date.date}
-                  </EventDate> */}
+                  </EventDate>
                 </DateDiv>
               </ImageDiv>
               <SessionDescriptionDiv>
@@ -68,11 +68,8 @@ function EventsSession() {
                 <h4>{data.instructor.name}</h4>
                 <ButtonsDiv>
                   <LinkInput>{data.meetUrl}</LinkInput>
-                  <CopyToClipboard text="link here">
-                    <ClipBoardButton>Copy link to clipboard</ClipBoardButton>
-                  </CopyToClipboard>
+                  <Eventt eventId={163175292693} />
                 </ButtonsDiv>
-                <Eventt />
               </SessionDescriptionDiv>
             </MainDiv>
           )}
@@ -166,6 +163,10 @@ const EventDate = styled.p`
     line-height: 1.5;
     font-size: 0.9em;
   }
+
+  @media (min-width: 800px) {
+    font-size: 1.2em;
+  }
 `;
 
 const SessionDescriptionDiv = styled.div`
@@ -219,10 +220,12 @@ const SessionDescriptionDiv = styled.div`
 
 const ButtonsDiv = styled.div`
   height: auto;
-  width: 80%;
+  width: 70%;
   margin-top: 4em;
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-start;
 
   @media (min-width: 800px) {
     margin-top: 6em;
@@ -235,29 +238,28 @@ const LinkInput = styled.div`
   height: auto;
   background-color: ${colors.white};
   color: ${colors.mainColor};
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+  padding: 0.2em;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border-radius: 4px;
 `;
 
-const ClipBoardButton = styled.button`
-  margin-top: 0.4em;
-  width: auto;
-  height: 2em;
-  background-color: ${colors.mainColor};
-  color: ${colors.white};
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  border-radius: 4px;
+// const ClipBoardButton = styled.button`
+//   margin-top: 0.4em;
+//   width: auto;
+//   height: 2em;
+//   background-color: ${colors.mainColor};
+//   color: ${colors.white};
+//   padding-left: 0.5em;
+//   padding-right: 0.5em;
+//   border-radius: 4px;
 
-  :focus {
-    outline: none;
-  }
-`;
+//   :focus {
+//     outline: none;
+//   }
+// `;
 
 const LoaderDiv = styled.div`
   height: 70vh;
