@@ -25,18 +25,18 @@ function Footer() {
         <FooterContent>
           <TitleDiv>Socials</TitleDiv>
           <ContentDiv>
-            <IconText href="/">
+            <IconText href="https://twitter.com/codematata">
               <Icon src={TwitterLogo} alt=""></Icon>
               <Text>Twitter</Text>
             </IconText>
-            <IconText href="/">
+            <IconText href="https://www.linkedin.com/company/codematata/">
               <Icon src={LinkedInLogo} alt=""></Icon>
               <Text>LinkedIn</Text>
             </IconText>
-            <IconText href="/">
+            {/* <IconText href="/">
               <Icon src={FacebookLogo} alt=""></Icon>
               <Text>Facebook</Text>
-            </IconText>
+            </IconText> */}
           </ContentDiv>
         </FooterContent>
         <FooterContent>
