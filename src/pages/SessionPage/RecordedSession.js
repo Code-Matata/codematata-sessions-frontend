@@ -4,6 +4,7 @@ import { colors } from "../../resources/ThemeColors";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Loader from "react-loader-spinner";
+import { Helmet } from "react-helmet";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -51,22 +52,32 @@ function RecordedSession() {
               codematata@gmail.com
             </LoaderDiv>
           ) : (
-            <SessionDescriptionDiv>
-              <h2>{data.title}</h2>
-              <p>{data.description}</p>
-              <h4 style={{ display: "inline-block", float: "right" }}>
-                by {data.instructor.name}
-              </h4>
-              <ButtonsDiv>
-                <IframeDiv
-                  src={data.videoUrl}
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                  allowfullscreen
-                ></IframeDiv>
-              </ButtonsDiv>
-            </SessionDescriptionDiv>
+            <>
+              <Helmet>
+                <meta charSet="utf-8" />
+                <title>{data.title}</title>
+                <meta
+                  name="description"
+                  content={`${data.description} by ${data.instructor.name}`}
+                />
+              </Helmet>
+              <SessionDescriptionDiv>
+                <h2>{data.title}</h2>
+                <p>{data.description}</p>
+                <h4 style={{ display: "inline-block", float: "right" }}>
+                  by {data.instructor.name}
+                </h4>
+                <ButtonsDiv>
+                  <IframeDiv
+                    src={data.videoUrl}
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                    allowfullscreen
+                  ></IframeDiv>
+                </ButtonsDiv>
+              </SessionDescriptionDiv>
+            </>
           )}
         </>
       )}

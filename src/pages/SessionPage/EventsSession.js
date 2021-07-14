@@ -8,6 +8,7 @@ import { useLocation } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import Eventt from "./Eventt";
 import { withRouter } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -58,6 +59,14 @@ function EventsSession() {
             <>
               {data.length !== 0 ? (
                 <MainDiv>
+                  <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>{data.title}</title>
+                    <meta
+                      name="description"
+                      content={`${data.description} by ${data.instructor.name}`}
+                    />
+                  </Helmet>
                   <ImageDiv>
                     <img
                       src={data.imageUrl.url}
