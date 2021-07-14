@@ -12,6 +12,7 @@ function useQuery() {
 }
 
 function EventsSession() {
+  const accessToken = localStorage.getItem("ACCESS_TOKEN");
   let query = useQuery();
   var id = query.get("id");
   const [data, setData] = useState({});
@@ -23,8 +24,7 @@ function EventsSession() {
       method: "get",
       url: `https://code-matata.herokuapp.com/api/v1/event/${id}`,
       headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiaWF0IjoxNjI2MTAxNjA1LCJleHAiOjE2MjY5NjU2MDV9.R8JEJhOK03c5-01mQbSnUjrnGjNgjlls0PtPxTus-chX1XfRFrW-RIB-7ocYcV1IE7zudPPS80C9q74EnlmjLg",
+        Authorization: `Bearer ${accessToken}`,
       },
     };
 
@@ -37,7 +37,7 @@ function EventsSession() {
         console.log(error);
         setIsLoading(false);
       });
-  }, [id]);
+  }, [id, accessToken]);
   return (
     <>
       {isLoading ? (
@@ -68,7 +68,7 @@ function EventsSession() {
                 <h4>{data.instructor.name}</h4>
                 <ButtonsDiv>
                   <LinkInput>{data.meetUrl}</LinkInput>
-                  <Eventt eventId={163175292693} />
+                  <Eventt eventId={data.eventId} />
                 </ButtonsDiv>
               </SessionDescriptionDiv>
             </MainDiv>
