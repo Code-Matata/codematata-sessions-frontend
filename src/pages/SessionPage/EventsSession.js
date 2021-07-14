@@ -68,7 +68,7 @@ function EventsSession() {
                 <h4>{data.instructor.name}</h4>
                 <ButtonsDiv>
                   <LinkInput>{data.meetUrl}</LinkInput>
-                  <Eventt eventId={163175292693} />
+                  <Eventt eventId={data.eventId} />
                 </ButtonsDiv>
               </SessionDescriptionDiv>
             </MainDiv>
