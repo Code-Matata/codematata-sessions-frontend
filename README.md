@@ -1,5 +1,7 @@
 # CodeMatata Front-End
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ef3a3e4c-a22d-4f9f-9c7d-29f462bfd5e7/deploy-status)](https://app.netlify.com/sites/codematata/deploys)
+
 This is the front-end application for the CodeMatata web app.
 
 ## Installation

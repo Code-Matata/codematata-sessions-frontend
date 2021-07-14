@@ -87,14 +87,14 @@ export default function Header({ authenticated, currentUser, onLogout }) {
                                   >
                                     {currentUser.name}
                                   </p>
-                                  <p
+                                  {/* <p
                                     className={classNames(
                                       active ? "bg-gray-100 text-center" : "",
                                       "block px-4 py-2 text-sm text-gray-700 text-center"
                                     )}
                                   >
                                     {currentUser.email}
-                                  </p>
+                                  </p> */}
                                   <button
                                     className={classNames(
                                       active
