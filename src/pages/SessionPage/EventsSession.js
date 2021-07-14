@@ -20,7 +20,7 @@ function EventsSession() {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-
+  const token = process.env.REACT_APP_ACCESS_TOKEN;
   useEffect(() => {
     window.scrollTo(0, 0);
     setIsLoading(true);
@@ -28,7 +28,7 @@ function EventsSession() {
       method: "get",
       url: `https://code-matata.herokuapp.com/api/v1/event/${id}`,
       headers: {
-        Authorization: `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiaWF0IjoxNjI2MTAxNjA1LCJleHAiOjE2MjY5NjU2MDV9.R8JEJhOK03c5-01mQbSnUjrnGjNgjlls0PtPxTus-chX1XfRFrW-RIB-7ocYcV1IE7zudPPS80C9q74EnlmjLg`,
+        Authorization: `Bearer ${token}`,
       },
     };
 
@@ -41,7 +41,7 @@ function EventsSession() {
         setIsLoading(false);
         setIsError(true);
       });
-  }, [id]);
+  }, [id, token]);
   return (
     <>
       {isLoading ? (
