@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// import { API_BASE_URL, ACCESS_TOKEN } from "../../constants";
 import styled from "styled-components";
 import axios from "axios";
 import { colors } from "../../resources/ThemeColors";
@@ -6,17 +7,19 @@ import { colors } from "../../resources/ThemeColors";
 import { useLocation } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import Eventt from "./Eventt";
+import { withRouter } from "react-router-dom";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
 function EventsSession() {
-  const accessToken = localStorage.getItem("ACCESS_TOKEN");
   let query = useQuery();
   var id = query.get("id");
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     setIsLoading(true);
@@ -24,7 +27,7 @@ function EventsSession() {
       method: "get",
       url: `https://code-matata.herokuapp.com/api/v1/event/${id}`,
       headers: {
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiaWF0IjoxNjI2MTAxNjA1LCJleHAiOjE2MjY5NjU2MDV9.R8JEJhOK03c5-01mQbSnUjrnGjNgjlls0PtPxTus-chX1XfRFrW-RIB-7ocYcV1IE7zudPPS80C9q74EnlmjLg`,
       },
     };
 
@@ -34,10 +37,10 @@ function EventsSession() {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error);
         setIsLoading(false);
+        setIsError(true);
       });
-  }, [id, accessToken]);
+  }, [id]);
   return (
     <>
       {isLoading ? (
@@ -46,32 +49,41 @@ function EventsSession() {
         </LoaderDiv>
       ) : (
         <>
-          {data.length > 0 ? (
-            <MainDiv>no data</MainDiv>
+          {isError ? (
+            <LoaderDiv>
+              Something went wrong! If this issue persists, please email us at
+              codematata@gmail.com
+            </LoaderDiv>
           ) : (
-            <MainDiv>
-              <ImageDiv>
-                <img
-                  src={data.imageUrl.url}
-                  alt={data.description}
-                  loading="lazy"
-                ></img>
-                <DateDiv>
-                  <EventDate>
-                    {data.date.eventMonth} {data.date.date}
-                  </EventDate>
-                </DateDiv>
-              </ImageDiv>
-              <SessionDescriptionDiv>
-                <h2>{data.title}</h2>
-                <p>{data.description}</p>
-                <h4>{data.instructor.name}</h4>
-                <ButtonsDiv>
-                  <LinkInput>{data.meetUrl}</LinkInput>
-                  <Eventt eventId={data.eventId} />
-                </ButtonsDiv>
-              </SessionDescriptionDiv>
-            </MainDiv>
+            <>
+              {data.length !== 0 ? (
+                <MainDiv>
+                  <ImageDiv>
+                    <img
+                      src={data.imageUrl.url}
+                      alt={data.description}
+                      loading="lazy"
+                    ></img>
+                    <DateDiv>
+                      <EventDate>
+                        {data.date.eventMonth} {data.date.date}
+                      </EventDate>
+                    </DateDiv>
+                  </ImageDiv>
+                  <SessionDescriptionDiv>
+                    <h2>{data.title}</h2>
+                    <p>{data.description}</p>
+                    <h4>{data.instructor.name}</h4>
+                    <ButtonsDiv>
+                      {/* <LinkInput>{data.meetUrl}</LinkInput> */}
+                      <Eventt eventId={data.eventId} />
+                    </ButtonsDiv>
+                  </SessionDescriptionDiv>
+                </MainDiv>
+              ) : (
+                <LoaderDiv>No data</LoaderDiv>
+              )}
+            </>
           )}
         </>
       )}
@@ -79,7 +91,7 @@ function EventsSession() {
   );
 }
 
-export default EventsSession;
+export default withRouter(EventsSession);
 
 const MainDiv = styled.div`
   height: auto;
@@ -220,31 +232,31 @@ const SessionDescriptionDiv = styled.div`
 
 const ButtonsDiv = styled.div`
   height: auto;
-  width: 70%;
+  width: 100%;
   margin-top: 4em;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 
   @media (min-width: 800px) {
     margin-top: 6em;
   }
 `;
 
-const LinkInput = styled.div`
-  margin-top: 1em;
-  width: auto;
-  height: auto;
-  background-color: ${colors.white};
-  color: ${colors.mainColor};
-  padding: 0.2em;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: flex-start;
-  border-radius: 4px;
-`;
+// const LinkInput = styled.div`
+//   margin-top: 1em;
+//   width: auto;
+//   height: auto;
+//   background-color: ${colors.white};
+//   color: ${colors.mainColor};
+//   padding: 0.2em;
+//   display: flex;
+//   flex-flow: column nowrap;
+//   align-items: center;
+//   justify-content: flex-start;
+//   border-radius: 4px;
+// `;
 
 // const ClipBoardButton = styled.button`
 //   margin-top: 0.4em;
@@ -267,4 +279,6 @@ const LoaderDiv = styled.div`
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  padding: 2em;
 `;

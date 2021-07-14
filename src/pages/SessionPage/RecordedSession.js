@@ -10,11 +10,12 @@ function useQuery() {
 }
 
 function RecordedSession() {
-  const accessToken = localStorage.getItem("ACCESS_TOKEN");
   let query = useQuery();
   var id = query.get("id");
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     setIsLoading(true);
@@ -22,7 +23,7 @@ function RecordedSession() {
       method: "get",
       url: `https://code-matata.herokuapp.com/api/v1/recording/${id}`,
       headers: {
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiaWF0IjoxNjI2MTAxNjA1LCJleHAiOjE2MjY5NjU2MDV9.R8JEJhOK03c5-01mQbSnUjrnGjNgjlls0PtPxTus-chX1XfRFrW-RIB-7ocYcV1IE7zudPPS80C9q74EnlmjLg`,
       },
     };
 
@@ -32,10 +33,10 @@ function RecordedSession() {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error);
         setIsLoading(false);
+        setIsError(true);
       });
-  }, [id, accessToken]);
+  }, [id]);
   return (
     <MainDiv>
       {isLoading ? (
@@ -43,22 +44,31 @@ function RecordedSession() {
           <Loader type="ThreeDots" color="#262a52" height={70} width={70} />
         </LoaderDiv>
       ) : (
-        <SessionDescriptionDiv>
-          <h2>{data.title}</h2>
-          <p>{data.description}</p>
-          <h4 style={{ display: "inline-block", float: "right" }}>
-            by {data.instructor.name}
-          </h4>
-          <ButtonsDiv>
-            <IframeDiv
-              src={data.videoUrl}
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-              allowfullscreen
-            ></IframeDiv>
-          </ButtonsDiv>
-        </SessionDescriptionDiv>
+        <>
+          {isError ? (
+            <LoaderDiv>
+              Something went wrong! If this issue persists, please email us at
+              codematata@gmail.com
+            </LoaderDiv>
+          ) : (
+            <SessionDescriptionDiv>
+              <h2>{data.title}</h2>
+              <p>{data.description}</p>
+              <h4 style={{ display: "inline-block", float: "right" }}>
+                by {data.instructor.name}
+              </h4>
+              <ButtonsDiv>
+                <IframeDiv
+                  src={data.videoUrl}
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  allowfullscreen
+                ></IframeDiv>
+              </ButtonsDiv>
+            </SessionDescriptionDiv>
+          )}
+        </>
       )}
     </MainDiv>
   );
@@ -158,4 +168,6 @@ const LoaderDiv = styled.div`
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  padding: 2em;
 `;
