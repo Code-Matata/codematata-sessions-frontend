@@ -30,7 +30,7 @@ import "react-s-alert/dist/s-alert-css-effects/slide.css";
 import ReactGA from "react-ga";
 var host = window.location.hostname;
 if (host !== "localhost") {
-  ReactGA.initialize("279115248");
+  ReactGA.initialize("UA-202237824-1");
   ReactGA.pageview(window.location.pathname + window.location.search);
 }
 

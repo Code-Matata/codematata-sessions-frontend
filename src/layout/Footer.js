@@ -3,7 +3,6 @@ import { colors } from "../resources/ThemeColors";
 import styled from "styled-components";
 import Github from "../resources/icons/github.png";
 import TwitterLogo from "../resources/icons/twitter.png";
-import FacebookLogo from "../resources/icons/facebook.png";
 import LinkedInLogo from "../resources/icons/linkedin.png";
 
 function Footer() {
@@ -14,28 +13,32 @@ function Footer() {
           <TitleDiv>Products</TitleDiv>
           <ContentDiv>
             <a
-              href="https://tusomeni.netlify.app/"
+              href="https://tusomeni.codematata.com/"
               target="_blank"
               rel="noreferrer"
             >
               Tusomeni
+            </a>
+            <a
+              href="https://kibuika.medium.com/launching-codematata-v1-39cee281125b"
+              target="_blank"
+              rel="noreferrer"
+              style={{ marginTop: "2em", width: "80%" }}
+            >
+              Why we built CodeMatata?
             </a>
           </ContentDiv>
         </FooterContent>
         <FooterContent>
           <TitleDiv>Socials</TitleDiv>
           <ContentDiv>
-            <IconText href="/">
+            <IconText href="https://twitter.com/codematata">
               <Icon src={TwitterLogo} alt=""></Icon>
               <Text>Twitter</Text>
             </IconText>
-            <IconText href="/">
+            <IconText href="https://www.linkedin.com/company/codematata/">
               <Icon src={LinkedInLogo} alt=""></Icon>
               <Text>LinkedIn</Text>
-            </IconText>
-            <IconText href="/">
-              <Icon src={FacebookLogo} alt=""></Icon>
-              <Text>Facebook</Text>
             </IconText>
           </ContentDiv>
         </FooterContent>
