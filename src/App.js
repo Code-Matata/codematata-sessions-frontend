@@ -8,18 +8,18 @@ import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 
 // pages
-// import MainPage from "./pages/MainPage/index";
-// import RedordedSession from "./pages/SessionPage/RecordedSession";
-// import EventsSession from "./pages/SessionPage/EventsSession";
-// import LoaderPage from "./pages/LoaderPage/LoaderPage";
-// import SignIn from "./pages/Auth/SignIn";
-// import LostPage from "./pages/404/404";
-// import CreateSession from "./pages/CreateSession";
-// import Profile from "./pages/Profile/Profile";
-// import CookieConsent from "./components/CookieConsent";
-import ConstructionPage from "./pages/ConstructionPage/Index";
+import MainPage from "./pages/MainPage/index";
+import RedordedSession from "./pages/SessionPage/RecordedSession";
+import EventsSession from "./pages/SessionPage/EventsSession";
+import LoaderPage from "./pages/LoaderPage/LoaderPage";
+import SignIn from "./pages/Auth/SignIn";
+import LostPage from "./pages/404/404";
+import CreateSession from "./pages/CreateSession";
+import Profile from "./pages/Profile/Profile";
+import CookieConsent from "./components/CookieConsent";
+// import ConstructionPage from "./pages/ConstructionPage/Index";
 
-// import OAuth2RedirectHandler from "./pages/Auth/OAuth2RedirectHandler";
+import OAuth2RedirectHandler from "./pages/Auth/OAuth2RedirectHandler";
 import { getCurrentUser } from "./utils/APIUtils";
 import { ACCESS_TOKEN } from "./constants";
 // import SecureRoute from "./pages/SecureRoute/SecureRoute";
@@ -80,20 +80,20 @@ class App extends Component {
   }
 
   render() {
-    // if (this.state.loading) {
-    //   <LoaderPage />;
-    // }
+    if (this.state.loading) {
+      <LoaderPage />;
+    }
     return (
       <Router history={hist}>
-        {/* <Header
+        <Header
           authenticated={this.state.authenticated}
           onLogout={this.handleLogout}
           currentUser={this.state.currentUser}
-        /> */}
+        />
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={ConstructionPage} />
-            {/* <Route MainPage path="/dash" component={MainPage} />
+            <Route exact path="/" component={MainPage} />
+            <Route path="/dash" component={MainPage} />
             <Route path="/recorded-session" component={RedordedSession} />
             <Route path="/live-session" component={EventsSession} />
             <Route path="/create-session" component={CreateSession} />
@@ -104,12 +104,12 @@ class App extends Component {
               )}
             />
             <Route path="/oauth2/redirect" component={OAuth2RedirectHandler} />
-            <Route component={LostPage} /> */}
+            <Route component={LostPage} />
           </Switch>
         </BrowserRouter>
 
         {/* <CookieConsent /> */}
-        {/* <Footer /> */}
+        <Footer />
       </Router>
     );
   }
